@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Home, About, Gallery, Contact, Blog, News } from './pages/pages-exports';
 import { NavBar, Footer } from './components/component-exports';
-import './App.css';
 
 function App () {
 
