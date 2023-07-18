@@ -1,0 +1,130 @@
+@import '../../../base-style';
+
+/* flex-c-spb : flex items with center alignment and space-between */
+@mixin flex-c-spb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    @include flex-c-spb();
+    padding: .8rem 1rem;
+    background: $background-gradient;
+    z-index: 9900;
+
+    div {
+
+        img {
+            filter: drop-shadow(0 0 0.4rem $primary-color);
+        }
+
+        .logo-short {
+            display: none;
+        }
+    }
+
+    ul {
+        @include flex-c-spb();
+        width: 60%;
+        padding: 0 4rem 0 0;
+        z-index: 8900;
+
+        li {
+            list-style-type: none;
+
+            a {
+                color: $text-color;
+                font-size: large;
+                transition: .3s;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    color: $white-color;
+                    filter: drop-shadow(0 0 0.25rem $white-color);
+                }
+
+            }
+        }
+
+        li:last-child {
+            background: $bg-dark;
+            padding: .5rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            pointer-events: all;
+            filter: drop-shadow(0 0 0.25rem $primary-color);
+            a {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    .mobile-hamburger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 864px) {
+    nav {
+        padding: 1.4rem 0;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            padding: 2rem 0;
+            top: 71px;
+            text-align: center;
+            background: $background-gradient;
+            width: 100vw;
+            z-index: 7900;
+
+            li {
+                padding: 1rem;
+                a {
+                    color: $text-color;
+                    font-size: large;
+                    font-weight: 500;
+                }
+                
+            }
+
+            
+            li:last-child {
+                width: 60%;
+                a {
+                    color: $white-color;
+                    filter: drop-shadow(0 0 0.25rem $white-color);
+                }
+            }
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        .mobile-hamburger {
+            display: block;
+            margin: 0;
+            padding: 0 .6rem 0 0;
+            z-index: 10900;
+        }
+    }
+}
+
+@media screen and (max-width: 464px) {
+
+    nav {
+        div {   
+            .logo-short {
+                display: block;
+            }
+            .logo-full {
+                display: none;
+            }
+        }
+    }
+    
+}
