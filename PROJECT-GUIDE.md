@@ -33,3 +33,9 @@ in the event of any errors in your editor, below are some of the checks to look 
 *single quotes for strings*
 
 *operator line breaks should be before the element or expression not after, read more [here](https://eslint.org/docs/latest/rules/operator-linebreak)*
+
+
+## Pushing / Pull Requests and Merging
+
+All updates should be pushed from the branch where the changes were made.
+After a successful pull request, please use the `Squash and Merge option` to merge changes to the main branch.
