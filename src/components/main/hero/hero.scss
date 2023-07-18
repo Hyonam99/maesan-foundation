@@ -1,0 +1,18 @@
+@import '../../../base-style';
+
+.hero_container {
+    border: 2px solid $text-color;
+    padding: 2rem;
+
+    .hero_container-wrapper {
+        border: 2px solid red;
+        padding: 2rem;
+
+        h2 {
+            font-size: x-large;
+            font-weight: 700;
+            color: $text-color;
+            text-align: center;
+        }
+    }
+}
