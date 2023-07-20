@@ -1,0 +1,146 @@
+@import '../../../base-style';
+
+.msp_container {
+    padding: 1rem;
+    h3 {
+        text-align: center;
+        font-size: 40px;
+        color: $text-color;
+        font-weight: bolder;
+        padding: .4rem;
+        text-transform: capitalize;
+    }
+}
+
+.msp_grid-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-items: center;
+    align-content: center;
+    row-gap: 3rem;
+    padding: 1rem;
+
+    .msp_grid-tiles_background {
+        width: 18rem;
+        height: 14rem;
+        border-radius: 11px;
+        box-shadow: -1px 2px 1px 3px rgba(0, 0, 0, 0.4);
+        padding: .2rem;
+        background-color: $secondary-color;
+        filter: drop-shadow(0 0 0.35rem $text-color);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primary-color;
+            filter: drop-shadow(0 0 0.55rem $primary-color);
+
+            .msp_grid-tiles_item { 
+
+                h4{
+                    color: $white-color;
+                }
+
+                span {
+                    filter: drop-shadow(0 0 0.35rem $white-color);
+    
+                    svg {
+                        fill: $white-color;
+                    }
+                }
+            }
+
+        }
+
+        .msp_grid-tiles_item {
+            // background-color: $secondary-color;
+            width: inherit;
+            height: inherit;
+            border-radius: 11px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h4 {
+                margin: 0;
+                padding: .4rem 0 0;
+                color: $text-color;
+                text-align: center;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            span {
+
+                svg {
+                    fill: $primary-color;
+                }
+            }
+
+        }
+
+    }
+
+    .msp_grid-tiles_background:nth-child(2) {
+        background-color: $primary-color;
+        filter: drop-shadow(0 0 0.55rem $primary-color);
+        h4{
+            color: $white-color;
+        }
+
+        span {
+            filter: drop-shadow(0 0 0.35rem $white-color);
+
+            svg {
+                fill: $white-color;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 904px) {
+    .msp_grid-tiles {
+        row-gap: 4rem;
+
+        .msp_grid-tiles_background {
+            width: 13rem;
+            height: 13rem;
+            padding: .2rem;
+
+            .msp_grid-tiles_item {
+
+                p {
+                    margin: 0;
+                    padding: .3rem 0 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 764px) {
+    .msp_container {
+        h3 {
+            font-size: 36px;
+        }
+    }
+}
+
+@media screen and (max-width: 654px) {
+    .msp_grid-tiles {
+        grid-template-columns: repeat(1, auto);
+        padding: .3rem;
+        margin: 0 auto;
+        row-gap: 2rem;
+
+        .msp_grid-tiles_background {
+            width: 13rem;
+            height: 13rem;
+            padding: .2rem;
+
+        }
+    }
+}
+
+
