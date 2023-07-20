@@ -5,10 +5,11 @@ STYLE PALLETTE FOR MAESAN FOUNDATION.
 ***************************************************************************/
 
 $primary-color : #d4af37;
+$primary-color-dark : hsl(46, 65%, 40%);
 $secondary-color : #ecf2f5;
 $bg-dark : #02142c;
 $text-color: #010a14;
-$overlay-curtain : #02142c99;
+$overlay-curtain : hsla(214, 91%, 9%, 0.6);
 $white-color: aliceblue;
 $background-gradient: linear-gradient(90deg, #02142C 4%, #02142CD6 15%, #02142C99 25%, #A5ACB1 34%, #A5ACB1A6 42%, #D4AF3796 55%, #D4AF37D4 70%, #D4AF37B5 89%, #D4AF37 100%);
 $background-gradient-mobile: linear-gradient(90deg, #02142C 4%, #02142CD6 15%, #02142C99 25%, #80898F 34%, #747A7F 42%, #D4AF3796 55%, #D4AF37D4 70%, #D4AF37B5 89%, #D4AF37 100%);

@@ -77,14 +77,14 @@ nav {
             padding: 2rem 0;
             top: 71px;
             text-align: center;
-            background: $background-gradient;
+            background: $bg-dark;
             width: 100vw;
             z-index: 7900;
 
             li {
                 padding: 1rem;
                 a {
-                    color: $text-color;
+                    color: $white-color;
                     font-size: large;
                     font-weight: 500;
                 }
@@ -93,7 +93,7 @@ nav {
 
             
             li:last-child {
-                width: 60%;
+                width: 70%;
                 a {
                     color: $white-color;
                     filter: drop-shadow(0 0 0.25rem $white-color);
