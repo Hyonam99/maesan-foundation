@@ -1,0 +1,25 @@
+@import '../../../base-style';
+
+.customButton {
+    background: $primary-color !important;
+    font-weight: bold !important;
+
+    &:hover {
+        background: $primary-color-dark !important;
+        opacity: .85 !important;
+        color: $white-color;
+    }
+}
+
+.outline {
+    background: transparent !important;
+    font-weight: bold !important;
+    border: 2px solid $primary-color !important;
+    color: $white-color !important;
+
+    &:hover {
+        opacity: 1 !important;
+        color: $white-color;
+    }
+}
+
