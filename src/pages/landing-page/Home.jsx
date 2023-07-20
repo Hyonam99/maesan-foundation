@@ -1,10 +1,11 @@
 import React from 'react';
-import { Hero } from '../../components/component-exports';
+import { Hero, Featured } from '../../components/component-exports';
 
 const Home = () => {
     return (
         <section>
             <Hero />
+            <Featured />
         </section>
     )
 };
