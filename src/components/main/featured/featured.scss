@@ -52,7 +52,6 @@
         }
 
         .msp_grid-tiles_item {
-            // background-color: $secondary-color;
             width: inherit;
             height: inherit;
             border-radius: 11px;
@@ -119,26 +118,26 @@
     }
 }
 
-@media screen and (max-width: 764px) {
-    .msp_container {
-        h3 {
-            font-size: 36px;
-        }
-    }
-}
 
-@media screen and (max-width: 654px) {
+@media screen and (max-width: 764px) {
     .msp_grid-tiles {
-        grid-template-columns: repeat(1, auto);
+        grid-template-columns: repeat(1, 1fr);
         padding: .3rem;
         margin: 0 auto;
         row-gap: 2rem;
 
+        h3 {
+            font-size: 36px;
+        }
+
         .msp_grid-tiles_background {
-            width: 13rem;
-            height: 13rem;
+            width: 70%;
+            height: 14rem;
             padding: .2rem;
 
+            .msp_grid-tiles_item {
+                width: 100%;
+            }
         }
     }
 }
