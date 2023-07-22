@@ -37,7 +37,7 @@ export const missionContent = [
     },
     {
         title: 'Empowerment',
-        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Offering Web3 Skill, Financial Supports...',
+        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Offering Web3 Skill, Financial Supports',
         image: child2
     },
     {
@@ -52,7 +52,7 @@ export const missionContent = [
     },
     {
         title: 'Empowerment',
-        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Offering Web3 Skill, Financial Supports...',
+        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Offering Web3 Skill, Financial Supports',
         image: child2
     },
     {
@@ -70,7 +70,7 @@ export const strategyContent = [
     },
     {
         title: 'Empowerment',
-        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Skill...',
+        text: 'Our Various Programs And Subsidiary Under The Parent Company, We Seek To Empower People Via Skill',
         image: child2
     },
     {

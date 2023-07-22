@@ -34,7 +34,7 @@ const Mission = () => {
             <article className='mission-container_cards-container'>
                 <Box p={2}>
                     <Swiper
-                        slidesPerView={windowSize.innerWidth < 754 ? 1 : windowSize.innerWidth < 980 ? 2 : 3}
+                        slidesPerView={windowSize.innerWidth < 768 ? 1 : windowSize.innerWidth < 1082 ? 2 : 3}
                         grid={{
                             rows: 1,
                         }}

@@ -63,3 +63,24 @@
     }
 
 }
+
+@media screen and (max-width: 484px) {
+    .mission-container {
+        padding: 1rem;
+    
+        .mission-container_intro {
+            padding: 1rem;
+        }
+    
+        .mission-container_cards-container {
+    
+            .swiper {
+                height: inherit;
+                z-index: 0 !important;
+                padding: 1rem;
+            }
+    
+        }
+    
+    }
+}

@@ -1,1 +1,9 @@
 @import '../../../base-style';
+
+
+.link-box {
+    a {
+        color: $primary-color;
+        font-weight: 500;
+    }
+}
