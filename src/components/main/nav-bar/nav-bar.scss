@@ -12,6 +12,8 @@ nav {
     padding: .8rem 1rem;
     background: $background-gradient;
     z-index: 9900;
+    position: sticky;
+    top: 0;
 
     div {
 

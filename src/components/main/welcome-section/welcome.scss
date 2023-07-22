@@ -1,0 +1,97 @@
+@import '../../../base-style';
+
+.welcome-container {
+    background-image: url('../../../assets/Images/children-2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    .welcome-container_wrapper {
+        background-color: $overlay-curtain-dark;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(464px, 1fr));
+        gap: 1rem;
+        padding: 2rem 1rem;
+
+        .welcome-container_text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+
+            h4 {
+                text-align: left;
+                font-size: 2rem;
+                color: $white-color;
+                padding: .4rem;
+                text-transform: capitalize;
+            }
+        }
+
+        .welcome-container_image-content {
+            padding: 2rem 1rem;
+
+            .welcome-container_image-content_wrapper {
+                padding: 4rem;
+                img {
+                    width: 100%;
+                    border-radius: 11px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 624px) {
+
+    .welcome-container {
+  
+
+        .welcome-container_wrapper {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));    
+    
+            .welcome-container_image-content {
+                padding: .5rem 0;
+    
+                .welcome-container_image-content_wrapper {
+                    padding: .8rem;
+                    img {
+                        width: 100%;
+                        border-radius: 11px;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+
+@media screen and (max-width: 424px) {
+
+    .welcome-container {
+  
+
+        .welcome-container_wrapper {
+            grid-template-columns: repeat(1, auto);
+            padding: .5rem 0;
+    
+            .welcome-container_text-content {
+                gap: 2rem;
+                padding: 1rem;
+    
+                h4 {
+                    font-size: 16px;
+                    color: $white-color;
+                    padding: .4rem;
+                }
+            }
+    
+        }
+
+    }
+
+}

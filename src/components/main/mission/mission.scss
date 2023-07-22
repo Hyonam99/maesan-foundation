@@ -1,0 +1,86 @@
+@import '../../../base-style';
+
+/*custom styling for the navigation button used in swiper js for the hero carousel*/
+@mixin swiper-nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    background-color: $white-color !important;
+}
+
+
+.mission-container {
+    padding: 3rem;
+    background: $secondary-color;
+
+    .mission-container_intro {
+        padding: 2rem 4rem;
+    }
+
+    .mission-container_cards-container {
+
+        .swiper {
+            height: inherit;
+            z-index: 0 !important;
+            padding: 1rem 3rem;
+    
+            .swiper-button-next {
+                background-image: url('../../../assets/custom-icons/circle-arrow-right-solid.svg');
+                @include swiper-nav-btn();
+            }
+    
+            .swiper-button-prev {
+                background-image: url('../../../assets/custom-icons/circle-arrow-left-solid.svg');
+                background-repeat: no-repeat;
+                @include swiper-nav-btn();
+            }
+    
+            .swiper-button-prev,
+            .swiper-rtl .swiper-button-next {
+                left: 0;
+                right: auto;
+            }
+    
+    
+            .swiper-button-next,
+            .swiper-rtl .swiper-button-prev {
+                right: 0;
+                left: auto;
+            }
+    
+            .swiper-button-next::after {
+                display: none;
+            }
+    
+            .swiper-button-prev::after {
+                display: none;
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 484px) {
+    .mission-container {
+        padding: 1rem;
+    
+        .mission-container_intro {
+            padding: 1rem;
+        }
+    
+        .mission-container_cards-container {
+    
+            .swiper {
+                height: inherit;
+                z-index: 0 !important;
+                padding: 1rem;
+            }
+    
+        }
+    
+    }
+}
