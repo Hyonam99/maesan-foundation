@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Banner, NewsContainer } from '../../components/component-exports';
 
-const News = ({ mini }) => {
+const News = () => {
     return (
-        <section>News</section>
+        <>
+            <Banner />
+            <NewsContainer />
+        </>
     )
 };
 
