@@ -1,6 +1,5 @@
 import React from 'react';
-import { Hero, Featured, Welcome, Mission, Strategy } from '../../components/component-exports';
-import { News } from '../pages-exports';
+import { Hero, Featured, Welcome, Mission, Strategy, NewsContainer } from '../../components/component-exports';
 
 const Home = () => {
     return (
@@ -10,7 +9,7 @@ const Home = () => {
             <Welcome />
             <Mission />
             <Strategy />
-            <News mini />
+            <NewsContainer mini={3} />
         </section>
     )
 };

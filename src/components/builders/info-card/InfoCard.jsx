@@ -25,7 +25,7 @@ const InfoCard = ({ imgSrc, title, text, plateColor, linkTitle, linkUrl }) => {
                     <Heading as='h5' fontSize='1.2rem' textAlign='center' marginY={1}>
                         {title}
                     </Heading>
-                    <Text fontSize={{ base: '14px', sm: '15px', md: '17px' }}>
+                    <Text fontSize={{ base: '14px', sm: '15px', md: '16px' }}>
                         { (linkTitle && `${text.substring(0, 110)}...`) ?? text}
                     </Text>
                 </Box>

@@ -1,0 +1,14 @@
+@import '../../../base-style';
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: .8rem;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 764px) { 
+    .news-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

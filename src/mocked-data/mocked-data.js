@@ -1,6 +1,9 @@
 import child from '../assets/Images/child-1.jpg';
 import child2 from '../assets/Images/children-2.jpg';
 import child3 from '../assets/Images/children-1.jpg';
+import charity1 from '../assets/Images/charity-1.jpg'
+import charity2 from '../assets/Images/charity-2.jpg'
+import charity3 from '../assets/Images/charity-3.jpg'
 
 export const Links = [
     { linkName: 'Home', linkUrl: '/' },
@@ -79,3 +82,36 @@ export const strategyContent = [
         image: child3
     }
 ];
+
+export const newsContent = [
+    {
+        title: 'Donation',
+        subTitle: 'Helping Poor Kids After An Unfortunate Tragedy',
+        image: charity1,
+    },
+    {
+        title: 'Charity',
+        subTitle: 'Outreach to a needy community, Preserve human lives donate now !',
+        image: charity2,
+    },
+    {
+        title: 'Donation',
+        subTitle: 'Charity Fund Raising Program Held by Maesan Foundation',
+        image: charity3,
+    },
+    {
+        title: 'Charity',
+        subTitle: 'to life than wealth ',
+        image: charity2,
+    },
+    {
+        title: 'Donation',
+        subTitle: 'Helping Poor Kids After An Unfortunate Tragedy, is tantamount to living Preserve human lives donate now !',
+        image: charity1,
+    },
+    {
+        title: 'Charity',
+        subTitle: 'Helping Poor Kids After An Unfortunate Tragedy, to life than wealth Preserve human lives donate now !',
+        image: charity3,
+    },
+]
