@@ -21,11 +21,11 @@ const InfoCard = ({ imgSrc, title, text, plateColor, linkTitle, linkUrl }) => {
                     width='100%'
                     alt='info-card'
                 />
-                <Box p={{ base: 1, sm: 3, md: 4 }} height='40%'>
+                <Box p={{ base: 2, sm: 3, md: 4 }} height={{ base: '46%', sm: '40%' }}>
                     <Heading as='h5' fontSize='1.2rem' textAlign='center' marginY={1}>
                         {title}
                     </Heading>
-                    <Text fontSize={{ base: '14px', sm: '15px', md: '16px' }}>
+                    <Text fontSize={{ base: '15px', sm: '17px', md: '16px', lg: '17px' }}>
                         { (linkTitle && `${text.substring(0, 110)}...`) ?? text}
                     </Text>
                 </Box>
