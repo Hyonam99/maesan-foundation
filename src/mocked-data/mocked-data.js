@@ -115,3 +115,5 @@ export const newsContent = [
         image: charity3,
     },
 ]
+
+export const sampleImages = [child, child2, child3, charity1, charity2, charity3, child2, child, charity3, child3, charity1]

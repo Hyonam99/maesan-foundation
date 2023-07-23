@@ -1,2 +1,65 @@
 @import '../../../base-style';
 
+/*custom styling for the background image containers used for the hero carousel*/
+@mixin bg-image-props {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner-container {
+    background: $secondary-color;
+    padding: 1rem;
+
+    .banner-container_background {
+        background-image: url('../../../assets/Images/children-2.jpg');
+        border-radius: 2.4rem;
+        @include bg-image-props();
+
+        .banner-container_overlay {
+            background: $overlay-curtain-dark;
+            color: $white-color;
+            padding: 4rem; 
+            border-radius: 2.4rem;
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 534px) {
+    .banner-container {
+        background: $secondary-color;
+        padding: 1rem;
+    
+        .banner-container_background {
+            background-image: url('../../../assets/Images/children-2.jpg');
+            border-radius: 2.4rem;
+            @include bg-image-props();
+    
+            .banner-container_overlay {
+                background: $overlay-curtain-dark;
+                color: $white-color;
+                padding: 2rem; 
+                border-radius: 2.4rem;
+            }
+    
+        }
+    
+    }
+}
+
+@media screen and (max-width: 424px) {
+
+    .banner-container {
+        
+        .banner-container_background {
+            border-radius: 1rem;  
+
+            .banner-container_overlay {
+                border-radius: 1rem;
+            }    
+        }
+    
+    }
+}
