@@ -1,0 +1,73 @@
+@import '../../base-style';
+
+.gallery_grid-container {
+    padding: 2rem 8rem;
+
+    .gallery_grid-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: .8rem;
+        padding: 1rem;
+        height: auto;
+
+        article {
+            color: $white-color;
+            grid-row: span 5;
+            height: auto;
+           border-radius: 16px 0 16px 0;
+            img {
+                border-radius: 16px 0 16px 0;
+            } 
+        }
+
+        article:nth-child(even) {
+            grid-row: span 4;
+        }
+        article:nth-child(4n+3) {
+            grid-row: span 2;
+        }
+
+    }
+}
+
+@media screen and (min-width: 1255px) {
+    .gallery_grid-container {
+    
+        .gallery_grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
+        }
+    }    
+}
+
+
+@media screen and (max-width: 965px) {
+    .gallery_grid-container {
+        padding: 3rem 1.4rem;
+    
+        .gallery_grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: .8rem;
+            padding: 1rem;
+            height: auto;
+    
+            article:nth-child(even) {
+                grid-row: span 4;
+            }
+            article:nth-child(4n+3) {
+                grid-row: span 6;
+            }
+            article:nth-child(8n+5) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            // article:nth-child(6n+5) {
+            //     grid-column: span 2;
+            //     grid-row: span 1;
+            // }
+    
+        }
+    }
+}
