@@ -7,6 +7,7 @@ import Strategy from './main/strategy/Strategy';
 import Mission from './main/mission/Mission';
 import NewsContainer from './main/news-container/NewsContainer';
 import Banner from './main/banner/Banner';
+import GalleryCarousel from './main/gallery-carousel/GalleryCarousel';
 import InfoCard from './builders/info-card/InfoCard';
 import NewsCard from './builders/news-card/NewsCard';
 import ButtonCustom from './builders/custom-button/ButtonCustom';
@@ -25,5 +26,6 @@ export {
     InfoCard,
     NewsCard,
     NewsContainer,
-    Banner
+    Banner,
+    GalleryCarousel
 };

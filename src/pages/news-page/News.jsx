@@ -5,7 +5,7 @@ import { Banner, NewsContainer } from '../../components/component-exports';
 const News = () => {
     return (
         <>
-            <Banner />
+            <Banner title='News and Insights'/>
             <NewsContainer />
         </>
     )

@@ -118,8 +118,5 @@ export const newsContent = [
         image: charity3,
     },
 ]
-<<<<<<< Updated upstream
-=======
 
 export const sampleImages = [child, child2, child3, charity4, charity2, charity3, child2, child5, charity3, child3, charity1, child4, child, charity4]
->>>>>>> Stashed changes
