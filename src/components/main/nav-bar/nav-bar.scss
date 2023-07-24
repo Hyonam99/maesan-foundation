@@ -95,11 +95,15 @@ nav {
 
             
             li:last-child {
+<<<<<<< Updated upstream
                 width: 70%;
                 a {
                     color: $white-color;
                     filter: drop-shadow(0 0 0.25rem $white-color);
                 }
+=======
+                filter:none;
+>>>>>>> Stashed changes
             }
         }
 
