@@ -94,9 +94,14 @@ nav {
 
             
             li:last-child {
-                width: 70%;
+                background: $bg-dark;
+                padding: 1rem;
+                border-radius: 0;
+                cursor: pointer;
+                pointer-events: all;
+                filter: none;
                 a {
-                    color: $white-color;
+                    color: $secondary-color;
                 }
             }
         }

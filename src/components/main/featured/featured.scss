@@ -80,22 +80,6 @@
 
     }
 
-    .msp_grid-tiles_background:nth-child(2) {
-        background-color: $primary-color;
-        filter: drop-shadow(0 0 0.55rem $primary-color);
-        h4{
-            color: $white-color;
-        }
-
-        span {
-            filter: drop-shadow(0 0 0.35rem $white-color);
-
-            svg {
-                fill: $white-color;
-            }
-        }
-    }
-
 }
 
 @media screen and (max-width: 904px) {
