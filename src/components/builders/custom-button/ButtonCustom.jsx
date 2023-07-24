@@ -3,9 +3,9 @@ import React from 'react';
 import { Button } from '@chakra-ui/react'
 import './button.scss'
 
-const ButtonCustom = ({ title, className, fill, outline }) => {
+const ButtonCustom = ({ title, btnStyle, fill, outline }) => {
     return (
-        <Button className={`customButton ${className} ${fill} ${outline && 'outline'}`}>
+        <Button className={`customButton ${btnStyle} ${fill} ${outline && 'outline'}`}>
             {title}
         </Button>
     )

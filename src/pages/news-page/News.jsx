@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Banner, NewsContainer } from '../../components/component-exports';
-import { newsContent } from '../../mocked-data/mocked-data';
+import { Banner } from '../../components/component-exports';
 
 const News = () => {
     return (
         <>
             <Banner title='News and Insights'/>
-            <NewsContainer dataSource={newsContent}/>
         </>
     )
 };

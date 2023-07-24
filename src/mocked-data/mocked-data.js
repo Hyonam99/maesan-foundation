@@ -11,9 +11,8 @@ export const Links = [
     { linkName: 'About', linkUrl: '/about' },
     { linkName: 'Blog', linkUrl: '/blog' },
     { linkName: 'Gallery', linkUrl: '/gallery' },
-    { linkName: 'News', linkUrl: '/news' },
     { linkName: 'Contact', linkUrl: '/contact' },
-    { linkName: 'Donate', linkUrl: '/donate' },
+    { linkName: 'Donate', linkUrl: '#' },
 ];
 
 export const heroContent = [

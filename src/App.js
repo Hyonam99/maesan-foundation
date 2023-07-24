@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, About, Gallery, Contact, Blog, News, Donate } from './pages/pages-exports';
+import { Home, About, Gallery, Contact, Blog } from './pages/pages-exports';
 import { NavBar, Footer } from './components/component-exports';
 import './App.scss';
 
@@ -18,9 +18,7 @@ function App () {
                     <Route path='/about' element={<About />} />
                     <Route path='/blog' element={<Blog />} />
                     <Route path='/gallery' element={<Gallery />} />
-                    <Route path='/news' element={<News />} />
                     <Route path='/contact' element={<Contact />} />
-                    <Route path='/donate' element={<Donate />} />
                 </Routes>
             </main>
 

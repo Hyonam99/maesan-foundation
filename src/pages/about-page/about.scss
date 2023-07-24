@@ -1,0 +1,221 @@
+@import '../../base-style';
+
+.about-container {
+    padding: 3rem 5rem;
+
+    .about-container_story-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 2rem 0;
+
+        h2 {
+            font-size: 20px;
+        }
+
+    }
+
+    .about-container_content {
+        margin-top: 2rem;
+
+        .about-container_content_details {
+
+            .about-container_content_details_accordion {
+                display: flex;
+
+                .about-container_content_details_image {
+                    padding: 1rem;
+                    flex: 0.7;
+                }
+    
+                .about-container_content_details_text {
+                    padding: .4rem;
+                    flex: 1.5;
+                }
+            }
+
+        }
+    }
+
+}
+
+.about-container_donate-cta {
+    padding: 3rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $primary-color;
+    color: $white-color;
+
+    h3 {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .custom-button-style {
+        border: 2px solid $white-color !important;
+        color: $white-color !important;
+    }
+
+}
+
+@media screen and (max-width: 1286px) {
+    .about-container {
+        padding: 2rem;
+        
+        .about-container_content {
+    
+            .about-container_content_details {
+    
+                .about-container_content_details_accordion {
+                        
+                    .about-container_content_details_image {
+                        padding: 0;
+
+                        img {
+                            scale: 0.9;
+                        }
+                    }
+        
+                    .about-container_content_details_text {
+                        padding: .4rem;
+
+                        p {
+                            margin-bottom: .4rem;
+                        }
+                    }
+                }
+    
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 986px) {
+    .about-container {
+        padding: 2rem;
+        
+        .about-container_content {
+    
+            .about-container_content_details {
+    
+                .about-container_content_details_accordion {
+                    flex-direction: column;
+                    align-items: flex-start;
+    
+                    .about-container_content_details_image {
+                        display: flex;
+                        align-items: flex-start;
+                        padding: 0;
+
+                        img {
+                            height: 160px;
+                            scale: 0.8;
+                        }
+                    }
+        
+                    .about-container_content_details_text {
+                        padding: .4rem;
+
+                        p {
+                            margin-bottom: .8rem;
+                        }
+                    }
+                }
+    
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 754px) {
+    .about-container {
+        padding: 2rem;
+    
+        .about-container_story-section {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+    
+        }
+    }
+
+    .about-container_donate-cta {
+        padding: 3rem;
+    
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+        .custom-button-style {
+            border: 2px solid $white-color !important;
+            color: $white-color !important;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .about-container {
+        padding: 2rem 1rem;
+
+        .about-container_story-section {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: .6rem;
+            padding: 1rem .4rem;
+    
+        }
+        
+        .about-container_content {
+    
+            .about-container_content_details {
+    
+                .about-container_content_details_accordion {
+                    flex-direction: column;
+                    align-items: center;
+                    padding: .4rem 0;
+    
+                    .about-container_content_details_image {
+                        display: flex;
+                        align-items: center;
+                        padding: 0;
+
+                        img {
+                            height: 180px;
+                            scale: 1;
+                        }
+                    }
+        
+                    .about-container_content_details_text {
+                        padding: .4rem;
+                    }
+                }
+    
+            }
+        }
+    }
+
+    .about-container_donate-cta {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        gap:.6rem;
+        background: $primary-color;
+        color: $white-color;
+    
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+        .custom-button-style {
+            border: 2px solid $white-color !important;
+            color: $white-color !important;
+        }
+    
+    }
+}
