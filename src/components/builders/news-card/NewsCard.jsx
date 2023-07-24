@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 import './news-card.scss'
 
-const NewsCard = ({ imgSrc, title, text, plateColor, linkTitle, linkUrl }) => {
+const NewsCard = ({ imgSrc, title, text }) => {
     return (
         <Box className='news-card'>
-            <Image src={imgSrc} objectFit='cover' rounded='lg' width='100%'/>
+            <Image src={imgSrc} height={{ base: '132px', sm: '120px' }} width='100%' objectFit='cover' rounded='lg' />
             <Box className='news-card_content'>
                 <Box className='news-card_content_avatar'>
                     <Avatar size='xs' src={imgSrc}/> <Heading fontSize={{ base: '16px', sm: '18px' }}>{title}</Heading><small>12, May 2023</small>

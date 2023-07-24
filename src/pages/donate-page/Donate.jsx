@@ -1,12 +1,12 @@
 import React from 'react';
 import { Banner } from '../../components/component-exports';
 
-const About = () => {
+const Donate = () => {
     return (
         <>
-            <Banner title='About Maesan' />
+            <Banner title='Donate Now' />
         </>
     )
 };
 
-export default About;
+export default Donate;

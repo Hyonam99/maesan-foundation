@@ -4,6 +4,7 @@ import child3 from '../assets/Images/children-1.jpg';
 import charity1 from '../assets/Images/charity-1.jpg'
 import charity2 from '../assets/Images/charity-2.jpg'
 import charity3 from '../assets/Images/charity-3.jpg'
+import charity4 from '../assets/Images/charity-4.jpg'
 
 export const Links = [
     { linkName: 'Home', linkUrl: '/' },
@@ -11,6 +12,7 @@ export const Links = [
     { linkName: 'Blog', linkUrl: '/blog' },
     { linkName: 'Gallery', linkUrl: '/gallery' },
     { linkName: 'News', linkUrl: '/news' },
+    { linkName: 'Contact', linkUrl: '/contact' },
     { linkName: 'Donate', linkUrl: '/donate' },
 ];
 
@@ -116,4 +118,4 @@ export const newsContent = [
     },
 ]
 
-export const sampleImages = [child, child2, child3, charity1, charity2, charity3, child2, child, charity3, child3, charity1]
+export const sampleImages = [child, child2, child3, charity4, charity2, charity3, child2, child, charity4, child3, charity1, charity3]

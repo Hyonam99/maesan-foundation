@@ -1,0 +1,179 @@
+@import '../../base-style';
+
+.contact-container {
+    .contact-container_content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem 5rem;
+
+        .contact_container_content-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3rem;
+
+            p {
+                font-size: 24px;
+                font-weight: 400;
+            }
+
+            .contact_container_content-details_links {
+                
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: .4rem;
+                    padding: .6rem 0;
+                    font-size: 20px;
+
+                    svg {
+                        fill: $primary-color;
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+
+        .contact_form-wrapper {
+            background: $secondary-color;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 1rem;
+            border-radius: .6rem;
+
+            .contact_form-wrapper_inputs {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 2rem 1rem;
+
+                input {
+                    background: white;
+                    color: $text-color;
+                }
+                textarea {
+                    background: white;
+                    color: $text-color;
+                }
+            }
+
+            button {
+                border-radius: 8px;
+                background: $primary-color;
+                border-left: 0;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 984px) {
+    .contact-container {
+        .contact-container_content{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 2rem 3rem;
+    
+        }
+    }
+}
+
+@media screen and (max-width: 864px) {
+    .contact-container {
+        .contact-container_content{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 2rem ;
+    
+        }
+    }
+}
+
+@media screen and (max-width: 754px) {
+    .contact-container {
+        .contact-container_content{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            padding: 2rem ;
+            row-gap: 1rem;
+    
+        }
+    }
+}
+
+
+@media screen and (max-width: 454px) {
+    .contact-container {
+        .contact-container_content{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            padding: 1rem ;
+            row-gap: .6rem;
+    
+            .contact_container_content-details {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+    
+                p {
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+    
+                .contact_container_content-details_links {
+                    
+                    a {
+                        display: flex;
+                        align-items: center;
+                        gap: .4rem;
+                        padding: .4rem 0;
+                        font-size: 17px;
+                        word-break: break-all;
+    
+                        svg {
+                            fill: $primary-color;
+                            font-size: 17px;
+                        }
+                    }
+                }
+            }
+    
+            .contact_form-wrapper {
+                background: $secondary-color;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                padding: .6rem;
+                border-radius: .6rem;
+    
+                .contact_form-wrapper_inputs {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    padding: 1rem;
+    
+                    input {
+                        background: white;
+                        color: $text-color;
+                    }
+                    textarea {
+                        background: white;
+                        color: $text-color;
+                    }
+                }
+    
+                button {
+                    border-radius: 8px;
+                    background: $primary-color;
+                    border-left: 0;
+                }
+            }
+        }
+    }
+}
