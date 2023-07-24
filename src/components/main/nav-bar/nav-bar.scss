@@ -28,8 +28,8 @@ nav {
 
     ul {
         @include flex-c-spb();
-        width: 60%;
-        padding: 0 4rem 0 0;
+        width: 66%;
+        padding: 0 2rem 0 0;
         z-index: 8900;
 
         li {
@@ -67,7 +67,7 @@ nav {
     }
 }
 
-@media screen and (max-width: 864px) {
+@media screen and (max-width: 884px) {
     nav {
         padding: 1.4rem 0;
 
