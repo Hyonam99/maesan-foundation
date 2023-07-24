@@ -1,0 +1,51 @@
+@import '../../base-style';
+
+.blog_grid-container {
+    padding: 2rem;
+
+    .blog_grid-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: .8rem;
+        padding: 1rem;
+
+        article {
+            color: $text-color;
+            height: 358px;
+            padding: 1rem;
+            border-radius: 16px;
+            img {
+                border-radius: 16px;
+            } 
+        }
+
+
+    }
+}
+
+
+@media screen and (max-width: 424px) {
+    .blog_grid-container {
+        padding: 1rem;
+    
+        .blog_grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(1, fr);
+            gap: .8rem;
+            padding: .5rem;
+    
+            article {
+                color: $text-color;
+                height: 358px;
+                padding: .5rem;
+                border-radius: 16px;
+                img {
+                    border-radius: 16px;
+                } 
+            }
+    
+    
+        }
+    }
+    
+}
