@@ -1,3 +1,6 @@
+![maesan-snippet](https://github.com/Hyonam99/maesan-foundation/assets/88059700/be9b5fdf-3327-4e44-b6b8-4f0e1d88fc36)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
