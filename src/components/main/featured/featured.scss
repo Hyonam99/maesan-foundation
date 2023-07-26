@@ -34,24 +34,27 @@
             background-color: $primary-color;
             filter: drop-shadow(0 0 0.55rem $primary-color);
 
-            .msp_grid-tiles_item { 
-
-                h4{
-                    color: $white-color;
-                }
-
-                span {
-                    filter: drop-shadow(0 0 0.35rem $white-color);
+            a {
+                .msp_grid-tiles_item { 
     
-                    svg {
-                        fill: $white-color;
+                    h4{
+                        color: $white-color;
+                    }
+    
+                    span {
+                        filter: drop-shadow(0 0 0.35rem $white-color);
+        
+                        svg {
+                            fill: $white-color;
+                        }
                     }
                 }
             }
 
+
         }
 
-        .msp_grid-tiles_item {
+        a {
             width: inherit;
             height: inherit;
             border-radius: 11px;
@@ -59,23 +62,33 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
-            h4 {
-                margin: 0;
-                padding: .4rem 0 0;
-                color: $text-color;
-                text-align: center;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            span {
-
-                svg {
-                    fill: $primary-color;
+            
+            .msp_grid-tiles_item {
+                width: inherit;
+                height: inherit;
+                border-radius: 11px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+    
+                h4 {
+                    margin: 0;
+                    padding: .4rem 0 0;
+                    color: $text-color;
+                    text-align: center;
+                    font-size: 28px;
+                    font-weight: bold;
                 }
+    
+                span {
+    
+                    svg {
+                        fill: $primary-color;
+                    }
+                }
+    
             }
-
         }
 
     }
@@ -91,13 +104,16 @@
             height: 13rem;
             padding: .2rem;
 
-            .msp_grid-tiles_item {
-
-                p {
-                    margin: 0;
-                    padding: .3rem 0 0;
+            a {
+                .msp_grid-tiles_item {
+    
+                    p {
+                        margin: 0;
+                        padding: .3rem 0 0;
+                    }
                 }
             }
+
         }
     }
 }

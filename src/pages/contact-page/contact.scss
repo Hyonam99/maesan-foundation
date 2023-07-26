@@ -40,31 +40,41 @@
             flex-direction: column;
             align-items: center;
             gap: 2rem;
-            padding: 2rem 1rem;
+            padding: 1rem;
             border-radius: .6rem;
-
+            
             .contact_form-wrapper_inputs {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                padding: 2rem 1rem;
+                padding: 1rem;
 
-                input {
-                    background: white;
-                    color: $text-color;
+                form { 
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+
+                    small {
+                        color: red;
+                        padding-left: .3rem;
+                    }
+
+                    input {
+                        background: white;
+                        color: $text-color;
+                    }
+                    textarea {
+                        background: white;
+                        color: $text-color;
+                    }
+                    
+                    button {
+                        margin: 1rem auto 0 auto;
+                    }
                 }
-                textarea {
-                    background: white;
-                    color: $text-color;
-                }
+
             }
 
-            button {
-                border-radius: 8px;
-                background: $primary-color;
-                border-left: 0;
-            }
         }
     }
 }
@@ -150,29 +160,33 @@
                 gap: 2rem;
                 padding: .6rem;
                 border-radius: .6rem;
-    
+
                 .contact_form-wrapper_inputs {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 1rem;
                     padding: 1rem;
+
+                    form {
+                        gap: .6rem;
+                        
+                        input {
+                            background: white;
+                            color: $text-color;
+                        }
+                        textarea {
+                            background: white;
+                            color: $text-color;
+                        }
+
+                        button {
+                            margin: 1rem auto 0 auto;
+                        }
+                    }
     
-                    input {
-                        background: white;
-                        color: $text-color;
-                    }
-                    textarea {
-                        background: white;
-                        color: $text-color;
-                    }
                 }
     
-                button {
-                    border-radius: 8px;
-                    background: $primary-color;
-                    border-left: 0;
-                }
             }
         }
     }

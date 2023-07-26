@@ -1,9 +1,12 @@
 import React from 'react';
-import { Box, Heading, Image, Text, Input, InputGroup, Button } from '@chakra-ui/react';
+import { Box, Heading, Image, Text, Input, InputGroup } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { BsTwitter, BsEnvelopeFill } from 'react-icons/bs';
 import Logo from '../../../assets/custom-icons/logo-full.png';
 import './footer.scss';
+import { ButtonCustom } from '../../component-exports';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 const Footer = () => {
     return (
@@ -16,16 +19,31 @@ const Footer = () => {
                     <Box className='footer_contact-details'>
                         <Heading>Contact</Heading>
                         <Box className='footer_contact-details_links'>
-                            <Link><BsTwitter /> @maesanfdn</Link>
-                            <Link><BsEnvelopeFill /> maesanfoundation@gmail.com</Link>
+                            <Link to='/twitter.com/maesanfdn'><BsTwitter /> @maesanfdn</Link>
+                            <Link to='mailto:maesanfoundation@gmail.com'><BsEnvelopeFill /> maesanfoundation@gmail.com</Link>
                         </Box>
                     </Box>
                     <Box className='footer_contact-form'>
                         <Text>Subscribe to Our News letter</Text>
-                        <InputGroup>
-                            <Input type='email' placeholder='your email' />
-                            <Button>Send</Button>
-                        </InputGroup>
+                        <Formik
+                            initialValues={{ email: '' }}
+                            validationSchema={Yup.object({
+                                email: Yup.string().email('Invalid email address').required('email is required'),
+                            })}
+                            onSubmit={(values) => console.log(values) }
+                        >
+                            {({ handleSubmit, getFieldProps, touched, errors }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <InputGroup>
+                                        <Input type='email' placeholder='your email' {...getFieldProps('email')} />
+                                        <ButtonCustom title='Send' type='submit'/>
+                                    </InputGroup>
+                                    {touched.email && errors.email
+                                        ? (<small>{errors.email}</small>)
+                                        : null}
+                                </form>
+                            )}
+                        </Formik>
                     </Box>
                 </section>
                 <Box className='footer_copyright'>

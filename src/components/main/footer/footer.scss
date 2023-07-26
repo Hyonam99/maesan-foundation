@@ -58,16 +58,26 @@
                     font-weight: 400;
                 }
                 
-                input {
-                    border-radius: 8px 0 0 8px;
-                    border-right: 0;
+                form {
+
+                    small {
+                        color: red;
+                        padding-left: .3rem;
+                    }
+
+                    input {
+                        border-radius: 8px 0 0 8px;
+                        border-right: 0;
+                    }
+        
+                    button {
+                        border-radius: 0 8px 8px 0;
+                        background: $primary-color;
+                        border-left: 0;
+                    }
+
                 }
-    
-                button {
-                    border-radius: 0 8px 8px 0;
-                    background: $primary-color;
-                    border-left: 0;
-                }
+                
             }
         }
 
@@ -120,15 +130,19 @@
                         font-weight: 400;
                     }
                     
-                    input {
-                        border-radius: 8px 0 0 8px;
-                        border-right: 0;
-                    }
-        
-                    button {
-                        border-radius: 0 8px 8px 0;
-                        background: $primary-color;
-                        border-left: 0;
+                    form {
+                        
+                        input {
+                            border-radius: 8px 0 0 8px;
+                            border-right: 0;
+                        }
+            
+                        button {
+                            border-radius: 0 8px 8px 0;
+                            background: $primary-color;
+                            border-left: 0;
+                        }
+
                     }
                 }
             }

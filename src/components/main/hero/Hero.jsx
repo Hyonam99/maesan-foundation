@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import { heroContent } from '../../../mocked-data/mocked-data';
 import { ButtonCustom } from '../../component-exports';
 import { ButtonGroup } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -60,8 +61,12 @@ const Hero = () => {
                             <h3>{content.subTitle}</h3>
                             <p>{content.subText}</p>
                             <ButtonGroup gap='4'>
-                                <ButtonCustom title='Join Us Today' outline/>
-                                <ButtonCustom title='Donate'/>
+                                <Link to='mailto:maesanfoundation@gmail.com'>
+                                    <ButtonCustom title='Join Us Today' outline/>
+                                </Link>
+                                <Link to='#'>
+                                    <ButtonCustom title='Donate'/>
+                                </Link>
                             </ButtonGroup>
                         </div>
                     </SwiperSlide>
