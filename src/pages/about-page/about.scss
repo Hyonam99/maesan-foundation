@@ -92,8 +92,17 @@
 }
 
 @media screen and (max-width: 986px) {
+    
     .about-container {
         padding: 2rem;
+
+        .about-container_story-section {
+    
+            h2 {
+                font-size: 18px;
+            }
+    
+        }
         
         .about-container_content {
     
@@ -137,6 +146,10 @@
             grid-template-columns: repeat(1, 1fr);
             gap: 1rem;
             padding: 1rem;
+
+            h2 {
+                font-size: 16px;
+            }
     
         }
     }

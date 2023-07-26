@@ -3,7 +3,7 @@ import { Banner, ButtonCustom, TitleDivider } from '../../components/component-e
 import child1 from '../../assets/Images/child-1.jpg'
 import child2 from '../../assets/Images/children-1.jpg'
 import child3 from '../../assets/Images/children-2.jpg'
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Image, Button } from '@chakra-ui/react';
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Image } from '@chakra-ui/react';
 import './about.scss'
 
 const About = () => {
