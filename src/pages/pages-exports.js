@@ -3,6 +3,6 @@ import About from './about-page/About';
 import Blog from './blog-page/Blog';
 import Gallery from './gallery-page/Gallery';
 import Contact from './contact-page/Contact';
-import News from './news-page/News'
+import BlogDetail from './blog-detail-page/BlogDetail'
 
-export { Home, About, Blog, Gallery, Contact, News }
+export { Home, About, Blog, Gallery, Contact, BlogDetail }

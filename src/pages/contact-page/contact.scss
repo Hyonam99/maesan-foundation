@@ -51,12 +51,13 @@
                 form { 
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 1rem;
 
                     small {
                         color: red;
                         padding-left: .3rem;
+                        text-align: left;
                     }
 
                     input {
@@ -164,7 +165,7 @@
                 .contact_form-wrapper_inputs {
                     display: flex;
                     flex-direction: column;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 1rem;
                     padding: 1rem;
 

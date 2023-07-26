@@ -19,7 +19,7 @@ const Footer = () => {
                     <Box className='footer_contact-details'>
                         <Heading>Contact</Heading>
                         <Box className='footer_contact-details_links'>
-                            <Link to='/twitter.com/maesanfdn'><BsTwitter /> @maesanfdn</Link>
+                            <Link to='https://twitter.com/maesanfdn' target='blank'><BsTwitter /> @maesanfdn</Link>
                             <Link to='mailto:maesanfoundation@gmail.com'><BsEnvelopeFill /> maesanfoundation@gmail.com</Link>
                         </Box>
                     </Box>
