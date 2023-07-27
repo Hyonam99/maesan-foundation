@@ -47,7 +47,7 @@ const Footer = () => {
                     </Box>
                 </section>
                 <Box className='footer_copyright'>
-                    <Text>© copy 2022 Maesan All rights reserved</Text>
+                    <Text>© 2023 Maesan All rights reserved</Text>
                 </Box>
             </section>
         </section>

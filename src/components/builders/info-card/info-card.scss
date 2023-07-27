@@ -7,3 +7,36 @@
         font-weight: 500;
     }
 }
+
+@media screen and (max-width: 316px) {
+    .info-card-content {
+        p {
+            font-size: 13px;
+        }
+    }
+
+    .link-box {
+        a {
+            font-size: 14px;
+        }
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .info-card-content {
+
+        h5 {
+            font-size: 18px;
+        }
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .link-box {
+        a {
+            font-size: 13px;
+        }
+    }
+}
+

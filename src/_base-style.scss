@@ -12,5 +12,5 @@ $text-color: #010a14;
 $overlay-curtain : hsla(214, 91%, 9%, 0.5);
 $overlay-curtain-dark : hsla(214, 86%, 6%, 0.8);
 $white-color: aliceblue;
-$background-gradient: linear-gradient(90deg, #02142C 4%, #02142CD6 15%, #02142C99 25%, #A5ACB1 34%, #A5ACB1A6 42%, #D4AF3796 55%, #D4AF37D4 70%, #D4AF37B5 89%, #D4AF37 100%);
-$background-gradient-mobile: linear-gradient(90deg, #02142C 4%, #02142CD6 15%, #02142C99 25%, #80898F 34%, #747A7F 42%, #D4AF3796 55%, #D4AF37D4 70%, #D4AF37B5 89%, #D4AF37 100%);
+$background-gradient: linear-gradient(90deg, rgb(2, 20, 44) 4%, rgba(2, 20, 44, 0.972) 15%, rgba(2, 20, 44, 0.948) 20%, hsl(206, 7%, 57%) 28%, rgba(212, 175, 55, 0.989) 42%, rgba(212, 175, 54, 0.992) 70%, hsla(46, 65%, 52%, 0.998) 89%, hsl(46, 65%, 52%) 100%);
+$background-gradient-mobile: linear-gradient(90deg, rgb(2, 20, 44) 4%, rgba(2, 20, 44, 0.972) 15%, rgba(2, 20, 44, 0.948) 25%, hsla(214, 91%, 10%, 0.938) 39%, hsl(206, 8%, 46%) 51%, rgba(212, 175, 55, 0.988) 68%, rgba(212, 175, 54, 0.992) 70%, hsla(46, 65%, 52%, 0.997) 89%, hsl(46, 65%, 52%) 100%);
