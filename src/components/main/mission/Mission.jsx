@@ -38,7 +38,7 @@ const Mission = () => {
                         grid={{
                             rows: 1,
                         }}
-                        spaceBetween={50}
+                        spaceBetween={40}
                         navigation={true}
                         modules={[Grid, Pagination, Navigation]}
                     >

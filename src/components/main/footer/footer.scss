@@ -163,6 +163,7 @@
         .footer-container_overlay {
     
             .footer-container_content{
+                justify-items: flex-start;
     
                 .footer_contact-details {
                     grid-column: 1 / 4;

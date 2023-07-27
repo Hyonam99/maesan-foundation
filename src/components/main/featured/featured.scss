@@ -24,10 +24,10 @@
         width: 18rem;
         height: 14rem;
         border-radius: 11px;
-        box-shadow: -1px 2px 1px 3px rgba(0, 0, 0, 0.4);
-        padding: .2rem;
+        box-shadow: -1px 1px 2px 1px hsla(0, 0%, 30%, 0.4);
+        padding: .1rem;
         background-color: $secondary-color;
-        filter: drop-shadow(0 0 0.35rem $text-color);
+        filter: drop-shadow(0 0 0.17rem $white-color);
         cursor: pointer;
 
         &:hover {
@@ -133,7 +133,7 @@
         .msp_grid-tiles_background {
             width: 70%;
             height: 14rem;
-            padding: .2rem;
+            padding: .1rem;
 
             a {
                 width: 100%;

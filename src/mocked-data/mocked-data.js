@@ -37,7 +37,7 @@ export const heroContent = [
 export const missionContent = [
     {
         title: 'Contain starvation',
-        text: 'With The Fast Rising Rate Of Children And Displacned People, Who Are Unable To Fend For Themselves, The Rate Of Hunger And Starvation Seems To Be Increasing.',
+        text: 'With The Fast Rising Rate Of Children And Displaced People, Who Are Unable To Fend For Themselves, The Rate Of Hunger And Starvation Seems To Be Increasing.',
         image: child
     },
     {

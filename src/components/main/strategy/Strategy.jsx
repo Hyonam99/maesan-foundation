@@ -14,7 +14,7 @@ const Strategy = () => {
                 <Box p={2} className='strategy-container_cards-container_wrapper'>
                     {strategyContent.map((strategy, i) => (
                         <Box key={`strategy-key-${i + 1}`}>
-                            <InfoCard imgSrc={strategy.image} title={strategy.title} text={strategy.text} plateColor='#ecf2f5' linkTitle='Read more' linkUrl='#'/>
+                            <InfoCard imgSrc={strategy.image} title={strategy.title} text={strategy.text} plateColor='#ecf2f5' linkTitle='Read more' linkUrl='/about'/>
                         </Box>
                     ))}
                 </Box>

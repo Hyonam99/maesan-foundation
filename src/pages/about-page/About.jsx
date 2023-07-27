@@ -86,13 +86,13 @@ const About = () => {
                                     </div>
                                     <div className='about-container_content_details_text'>
                                         <p>
-                                        The Future Of Nigeria Depends On What Is Does Today With Its Dynamic
+                                        The Future Of Nigeria Depends On What It Does Today With Its Dynamic
                                          Youth Population. This Demographic Advantage Must Be Tuned In A
                                           First-Rate And Well-Trained Workforce, For Nigeria, For The Region And
                                            For The World.
                                         </p>
                                         <p>
-                                        We Should Priotise Investments In The Youth; In Up Skilling Them For The
+                                        We Should Prioritize Investments In The Youth; In Up Skilling Them For The
                                          Jobs Of The Future, Not The Jobs Of The Past; By Moving Away From So-Called
                                           Youth Empowerment To Youth Investment. To Opening Up The Social And Political
                                            Space To The Youth To Air Their Views And Become A Positive Force For National
