@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const InfoCard = ({ imgSrc, title, text, plateColor, linkTitle, linkUrl }) => {
     return (
         <Box
-            height={linkTitle ? { base: '300px', md: '400px', lg: '458px' } : '458px'}
+            height={linkTitle ? { base: '320px', md: '400px', lg: '458px' } : '458px'}
             boxShadow='md'
             rounded='md'
             backgroundColor={plateColor}
@@ -16,7 +16,7 @@ const InfoCard = ({ imgSrc, title, text, plateColor, linkTitle, linkUrl }) => {
                 <Image
                     src={imgSrc}
                     objectFit='cover'
-                    height={linkTitle ? { base: '40%', sm: '46%', md: '52%' } : '44%'}
+                    height={linkTitle ? { base: '42%', sm: '46%', md: '52%' } : '44%'}
                     width='100%'
                     alt='info-card'
                 />
