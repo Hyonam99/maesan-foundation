@@ -12,5 +12,4 @@ $text-color: #010a14;
 $overlay-curtain : hsla(214, 91%, 9%, 0.5);
 $overlay-curtain-dark : hsla(214, 86%, 6%, 0.8);
 $white-color: aliceblue;
-$background-gradient: linear-gradient(90deg, rgb(2, 20, 44) 4%, rgba(2, 20, 44, 0.972) 15%, rgba(2, 20, 44, 0.948) 20%, hsl(206, 7%, 57%) 28%, rgba(212, 175, 55, 0.989) 42%, rgba(212, 175, 54, 0.992) 70%, hsla(46, 65%, 52%, 0.998) 89%, hsl(46, 65%, 52%) 100%);
-$background-gradient-mobile: linear-gradient(90deg, rgb(2, 20, 44) 4%, rgba(2, 20, 44, 0.972) 15%, rgba(2, 20, 44, 0.948) 25%, hsla(214, 91%, 10%, 0.938) 39%, hsl(206, 8%, 46%) 51%, rgba(212, 175, 55, 0.988) 68%, rgba(212, 175, 54, 0.992) 70%, hsla(46, 65%, 52%, 0.997) 89%, hsl(46, 65%, 52%) 100%);
+$background-gradient: linear-gradient(90deg, hsl(214, 91%, 9%) 4%, hsla(214, 91%, 9%, 0.932) 15%, hsla(214, 91%, 9%, 0.87) 25%, hsl(205, 7%, 67%) 34%, hsla(205, 7%, 67%, 0.932) 42%, hsla(46, 65%, 52%, 0.952) 55%, hsla(46, 65%, 52%, 0.959) 70%, hsla(46, 65%, 52%, 0.973) 89%, #D4AF37 100%);

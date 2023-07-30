@@ -32,7 +32,7 @@ const Contact = () => {
                                 })}
                                 onSubmit={(values) => console.log(values) }
                             >
-                                {({ handleSubmit, getFieldProps, touched, errors }) => (
+                                {({ handleSubmit, getFieldProps, touched, errors, values }) => (
                                     <InputGroup className='contact_form-wrapper_inputs'>
                                         <form onSubmit={handleSubmit}>
                                             <Input type='text' placeholder='enter your name' {...getFieldProps('name')}/>
@@ -53,7 +53,9 @@ const Contact = () => {
                                             {touched.message && errors.message
                                                 ? (<small>{errors.message}</small>)
                                                 : null}
-                                            <ButtonCustom title='Contact Us' type='submit' />
+                                            <Link to={`mailto:maesanfoundation@gmail.com?subject=Name: ${values.name}&body=${values.message}`}>
+                                                <ButtonCustom title='Contact Us' type='button' />
+                                            </Link>
                                         </form>
                                     </InputGroup>
                                 )}
