@@ -36,7 +36,7 @@ const Footer = () => {
                                 <form onSubmit={handleSubmit}>
                                     <InputGroup>
                                         <Input type='email' placeholder='your email' {...getFieldProps('email')} />
-                                        <Link to={`mailto:maesanfoundation@gmail.com?subject=Subscribe to Newsletter&body=${values.email}`}></Link><ButtonCustom title='Send' type='button'/>
+                                        <Link to={`mailto:maesanfoundation@gmail.com?subject=Subscribe to Newsletter&body=${values.email}`}><ButtonCustom title='Send' type='button'/></Link>
                                     </InputGroup>
                                     {touched.email && errors.email
                                         ? (<small>{errors.email}</small>)
