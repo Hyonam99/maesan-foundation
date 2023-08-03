@@ -30,9 +30,11 @@ const Contact = () => {
                                     email: Yup.string().email('Invalid email address').required('email is required'),
                                     message: Yup.string().required('message is required'),
                                 })}
-                                onSubmit={(values) => console.log(values) }
+                                onSubmit={(values) =>
+                                    window.open(`mailto:maesanfoundation@gmail.com?subject=Name: ${values.name}&body=${values.message}`, 'blank')
+                                }
                             >
-                                {({ handleSubmit, getFieldProps, touched, errors, values }) => (
+                                {({ handleSubmit, getFieldProps, touched, errors }) => (
                                     <InputGroup className='contact_form-wrapper_inputs'>
                                         <form onSubmit={handleSubmit}>
                                             <Input type='text' placeholder='enter your name' {...getFieldProps('name')}/>
@@ -53,9 +55,7 @@ const Contact = () => {
                                             {touched.message && errors.message
                                                 ? (<small>{errors.message}</small>)
                                                 : null}
-                                            <Link to={`mailto:maesanfoundation@gmail.com?subject=Name: ${values.name}&body=${values.message}`}>
-                                                <ButtonCustom title='Contact Us' type='button' />
-                                            </Link>
+                                            <ButtonCustom title='Contact Us' type='submit' />
                                         </form>
                                     </InputGroup>
                                 )}
