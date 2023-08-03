@@ -30,13 +30,15 @@ const Footer = () => {
                             validationSchema={Yup.object({
                                 email: Yup.string().email('Invalid email address').required('email is required'),
                             })}
-                            onSubmit={(values) => console.log(values) }
+                            onSubmit={(values) =>
+                                window.open(`mailto:maesanfoundation@gmail.com?subject=Subscribe to Newsletter&body=${values.email}`, 'blank')
+                            }
                         >
-                            {({ handleSubmit, getFieldProps, touched, errors, values }) => (
+                            {({ handleSubmit, getFieldProps, touched, errors }) => (
                                 <form onSubmit={handleSubmit}>
                                     <InputGroup>
                                         <Input type='email' placeholder='your email' {...getFieldProps('email')} />
-                                        <Link to={`mailto:maesanfoundation@gmail.com?subject=Subscribe to Newsletter&body=${values.email}`}><ButtonCustom title='Send' type='button'/></Link>
+                                        <ButtonCustom title='Send' type='submit'/>
                                     </InputGroup>
                                     {touched.email && errors.email
                                         ? (<small>{errors.email}</small>)
