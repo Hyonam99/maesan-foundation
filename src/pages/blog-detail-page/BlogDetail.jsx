@@ -22,10 +22,10 @@ const BlogDetail = () => {
     return (
         <>
             <section className='blog-detail'>
-                <Heading textAlign='center' fontSize={{ base: '24px', md: '30px', lg: '36px' }}>Maesan News and Insights</Heading>
+                <Heading textAlign='center' fontSize={{ base: '30px', md: '36px', lg: '42px' }}>Maesan News and Insights</Heading>
 
                 <section className='blog-detail_content'>
-                    <div className='blog-detail_content_navigation' onClick={() => { navigate(-1) }}> <FaArrowLeftLong /> go back</div>
+                    <div className='blog-detail_content_navigation' onClick={() => { navigate(-1) }}> <FaArrowLeftLong size={26} color='#d4af37'/></div>
                     <Heading fontSize={{ base: '18px', md: '22px', lg: '26px' }} >{blogDetail?.title}</Heading>
                     <Box height='md'>
                         <Image
