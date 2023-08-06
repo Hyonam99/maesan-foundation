@@ -27,7 +27,7 @@ const BlogDetail = () => {
                     <Heading textAlign='center' fontSize={{ base: '30px', md: '36px', lg: '42px' }}>Maesan News and Insights</Heading>
 
                     <section className='blog-detail_content'>
-                        <div className='blog-detail_content_navigation' onClick={() => { navigate(-1) }}> <FaArrowLeftLong size={26} color='#d4af37'/></div>
+                        <div className='blog-detail_content_navigation'> <FaArrowLeftLong size={26} color='#d4af37' onClick={() => { navigate(-1) }}/></div>
                         <Heading fontSize={{ base: '20px', md: '24px', lg: '28px' }} >{blogDetail?.title}</Heading>
                         <Box height='md'>
                             <Image
