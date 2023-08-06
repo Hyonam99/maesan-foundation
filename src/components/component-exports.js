@@ -12,6 +12,7 @@ import InfoCard from './builders/info-card/InfoCard';
 import NewsCard from './builders/news-card/NewsCard';
 import ButtonCustom from './builders/custom-button/ButtonCustom';
 import TitleDivider from './builders/title-divider/TitleDivider';
+import CustomSpinner from './builders/Spinner/Spinner';
 
 export {
     NavBar,
@@ -27,5 +28,6 @@ export {
     NewsCard,
     NewsContainer,
     Banner,
-    GalleryCarousel
+    GalleryCarousel,
+    CustomSpinner
 };
