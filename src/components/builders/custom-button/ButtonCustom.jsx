@@ -4,12 +4,13 @@ import { Button } from '@chakra-ui/react'
 
 import './button.scss'
 
-const ButtonCustom = ({ title, btnStyle, fill, outline, onClick, type }) => {
+const ButtonCustom = ({ title, btnStyle, fill, outline, onClick, type, isLoading }) => {
     return (
         <Button
             type={type}
             className={`customButton ${btnStyle} ${fill} ${outline && 'outline'}`}
             onClick={onClick}
+            isLoading={isLoading}
         >
             {title}
         </Button>

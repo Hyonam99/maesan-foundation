@@ -149,7 +149,7 @@ const About = () => {
             </section>
             <section className='about-container_donate-cta'>
                 <h3>Help us so we can help others</h3>
-                <ButtonCustom title='Donate now' outline btnStyle='custom-button-style'/>
+                <ButtonCustom title='Donate now' outline btnStyle='custom-button-style' onClick={() => { window.open('https://paystack.com/pay/-jzgcuac5a', 'blank') }}/>
             </section>
         </>
     );

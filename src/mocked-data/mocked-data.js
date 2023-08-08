@@ -13,7 +13,7 @@ export const Links = [
     { linkName: 'Blog', linkUrl: '/blog' },
     { linkName: 'Gallery', linkUrl: '/gallery' },
     { linkName: 'Contact', linkUrl: '/contact' },
-    { linkName: 'Donate', linkUrl: '#' },
+    { linkName: 'Donate', linkUrl: 'https://paystack.com/pay/-jzgcuac5a' },
 ];
 
 export const heroContent = [

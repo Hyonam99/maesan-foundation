@@ -12,7 +12,7 @@ const NavBar = () => {
     return (
         <nav>
             <div>
-                <Link>
+                <Link to='/'>
                     <img src={Logo} alt='maesan-logo' className='logo-full'/>
                     <img src={LogoShort} alt='maesan-logo' className='logo-short'/>
                 </Link>
@@ -21,7 +21,7 @@ const NavBar = () => {
 
                 {Links.map((link) => (
                     <li key={link.linkName}>
-                        <Link to={link.linkUrl} onClick={() => setIsToggled(false)}>{link.linkName}</Link>
+                        <Link to={link.linkUrl} onClick={() => setIsToggled(false)} target={Links.indexOf(link) === 5 && 'blank'}>{link.linkName}</Link>
                     </li>
                 ))}
 
