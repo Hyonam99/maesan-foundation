@@ -1,9 +1,9 @@
 import React from 'react';
-import { Spinner, Container } from '@chakra-ui/react'
+import { Spinner, Container, Text } from '@chakra-ui/react'
 
 const CustomSpinner = () => {
     return (
-        <Container padding={24} centerContent>
+        <Container padding={20} maxW='5xl' centerContent>
             <Spinner
                 thickness='4px'
                 speed='0.92s'
@@ -11,6 +11,7 @@ const CustomSpinner = () => {
                 color='#d4af37'
                 size='xl'
             />
+            <Text marginTop={8} fontSize='18px' textAlign='center'>Please wait while we load your content</Text>
         </Container>
     )
 };

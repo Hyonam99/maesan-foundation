@@ -1,31 +1,26 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, About, Gallery, Contact, Blog, BlogDetail } from './pages/pages-exports';
-import { NavBar, Footer } from './components/component-exports';
+import { Home, About, Gallery, Contact, Blog, BlogDetail, Login, Register, CreateBlog, Dashboard } from './pages/pages-exports';
+import UserLayout from 'layouts/UserLayout';
+import AdminLayout from 'layouts/AdminLayout';
 import './App.scss';
 
 function App () {
 
     return (
         <>
-            <header>
-                <NavBar />
-            </header>
-
-            <main>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/blog' element={<Blog />} />
-                    <Route path='/blog/:blogId' element={<BlogDetail />} />
-                    <Route path='/gallery' element={<Gallery />} />
-                    <Route path='/contact' element={<Contact />} />
-                </Routes>
-            </main>
-
-            <footer>
-                <Footer />
-            </footer>
+            <Routes>
+                <Route path='/' element={<UserLayout><Home /></UserLayout>} />
+                <Route path='/about' element={<UserLayout><About /></UserLayout>} />
+                <Route path='/blog' element={<UserLayout><Blog /></UserLayout>} />
+                <Route path='/blog/:blogId' element={<UserLayout><BlogDetail /></UserLayout>} />
+                <Route path='/gallery' element={<UserLayout><Gallery /></UserLayout>} />
+                <Route path='/contact' element={<UserLayout><Contact /></UserLayout>} />
+                <Route path='/admin/login' element={<Login />} />
+                <Route path='/admin/register' element={<Register />} />
+                <Route path='/admin/blog' element={<AdminLayout><CreateBlog /></AdminLayout>} />
+                <Route path='/admin/dashboard' element={<AdminLayout><Dashboard /></AdminLayout>} />
+            </Routes>
         </>
     );
 

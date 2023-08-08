@@ -9,6 +9,12 @@
         opacity: .85 !important;
         color: $white-color;
     }
+
+    &:disabled {
+        background: red;
+        pointer-events: none;
+        cursor: default;
+    }
 }
 
 .outline {
