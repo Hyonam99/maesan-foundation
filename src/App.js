@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, About, Gallery, Contact, Blog, BlogDetail, Login, Register, CreateBlog, Dashboard } from './pages/pages-exports';
+import { Home, About, Gallery, Contact, Blog, BlogDetail, Login, Register, EditBlog, Dashboard } from './pages/pages-exports';
 import UserLayout from 'layouts/UserLayout';
 import AdminLayout from 'layouts/AdminLayout';
 import './App.scss';
@@ -18,7 +18,7 @@ function App () {
                 <Route path='/contact' element={<UserLayout><Contact /></UserLayout>} />
                 <Route path='/admin/login' element={<Login />} />
                 <Route path='/admin/register' element={<Register />} />
-                <Route path='/admin/blog' element={<AdminLayout><CreateBlog /></AdminLayout>} />
+                <Route path='/admin/edit-blog' element={<AdminLayout><EditBlog /></AdminLayout>} />
                 <Route path='/admin/dashboard' element={<AdminLayout><Dashboard /></AdminLayout>} />
             </Routes>
         </>

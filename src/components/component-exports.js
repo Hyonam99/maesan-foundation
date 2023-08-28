@@ -13,6 +13,12 @@ import NewsCard from './builders/news-card/NewsCard';
 import ButtonCustom from './builders/custom-button/ButtonCustom';
 import TitleDivider from './builders/title-divider/TitleDivider';
 import CustomSpinner from './builders/Spinner/Spinner';
+import AdminNav from './main/admin/admin-nav/AdminNav';
+import AdminDashboard from './main/admin/admin-dashboard/AdminDashboard';
+import AdminTable from './main/admin/admin-table/AdminTable';
+import ContentEditor from './main/admin/blog-editor/ContentEditor';
+import QUILWYSWIG from './builders/quil-wyswig/QUILWYSWIG';
+import ImageInput from './builders/blog-image-input/ImageInput';
 
 export {
     NavBar,
@@ -29,5 +35,11 @@ export {
     NewsContainer,
     Banner,
     GalleryCarousel,
-    CustomSpinner
+    CustomSpinner,
+    AdminNav,
+    AdminDashboard,
+    AdminTable,
+    ContentEditor,
+    QUILWYSWIG,
+    ImageInput
 };

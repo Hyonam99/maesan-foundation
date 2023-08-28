@@ -1,0 +1,164 @@
+@import '../../../../base-style';
+
+.content-editor-container {
+    .content-editor-container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .content-editor-container_buttons-wrapper {
+            flex: .8;
+            display: flex;
+            gap: .5rem;
+            justify-content: flex-end;
+
+            .btn-1,
+            .btn-2,
+            .btn-3 {
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                padding: 7px 26px !important;
+                border-radius: 4px !important;
+                color: white !important;
+                height: fit-content !important;
+            }
+    
+            .btn-1 {
+                border-color: hsl(158, 52%, 48%) !important;
+                background: hsl(158, 52%, 48%) !important;
+    
+                &:hover {
+                    background: hsl(158, 52%, 48%) !important;
+                }
+            }
+            .btn-2 {
+                border-color: hsl(217, 95%, 57%) !important;
+                background: hsl(217, 95%, 57%) !important;
+    
+                &:hover {
+                    background: hsl(217, 95%, 57%) !important;
+                }
+            }
+            .btn-3 {
+                border-color: #a50303 !important;
+                background: #a50303 !important;
+    
+                &:hover {
+                    background: #a50303 !important;
+                }
+            }
+        }
+    }
+
+
+    .content-editor-container_form-wrapper {
+        // border: 2px solid red;
+
+        form {
+            // border: 2px solid purple;
+            .input-holder-group {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .inputs-holder {
+                margin-bottom: .4rem;
+                small {
+                    color: #a50303;
+                }
+                p {
+                    margin-bottom: .4rem;
+                    font-size: 18px;
+                }
+                input {
+                    // border: 1px solid blue;
+                    background: white;
+                }
+            }
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 458px) {
+    .content-editor-container {
+        .content-editor-container-header {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            align-items: flex-start;
+    
+            .content-editor-container_buttons-wrapper {
+                flex: .8;
+                display: flex;
+                gap: .5rem;
+                justify-content: flex-end;
+    
+                .btn-1,
+                .btn-2,
+                .btn-3 {
+                    font-size: 14px !important;
+                    font-weight: 400 !important;
+                    padding: 7px 26px !important;
+                    border-radius: 4px !important;
+                    color: white !important;
+                    height: fit-content !important;
+                }
+        
+                .btn-1 {
+                    border-color: hsl(158, 52%, 48%) !important;
+                    background: hsl(158, 52%, 48%) !important;
+        
+                    &:hover {
+                        background: hsl(158, 52%, 48%) !important;
+                    }
+                }
+                .btn-2 {
+                    border-color: hsl(217, 95%, 57%) !important;
+                    background: hsl(217, 95%, 57%) !important;
+        
+                    &:hover {
+                        background: hsl(217, 95%, 57%) !important;
+                    }
+                }
+                .btn-3 {
+                    border-color: #a50303 !important;
+                    background: #a50303 !important;
+        
+                    &:hover {
+                        background: #a50303 !important;
+                    }
+                }
+            }
+        }
+    
+    
+        .content-editor-container_form-wrapper {
+            // border: 2px solid red;
+    
+            form {
+                // border: 2px solid purple;
+                .input-holder-group {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 0;
+                }
+                .inputs-holder {
+                    margin-bottom: .4rem;
+                    p {
+                        margin-bottom: .4rem;
+                        font-size: 18px;
+                    }
+                    input {
+                        // border: 1px solid blue;
+                        background: white;
+                    }
+                }
+    
+            }
+    
+        }
+    }
+}

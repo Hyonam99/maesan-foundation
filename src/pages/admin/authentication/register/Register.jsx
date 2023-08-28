@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Box, Input, InputGroup, Text, Checkbox, Alert, AlertIcon } from '@chakra-ui/react';
 import { ButtonCustom } from 'components/component-exports';
-import { useRegister } from 'services/api-services';
+import { useRegister } from 'services/api-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Register = () => {
 
     useEffect(() => {
         if (registerHook.data && !registerHook.error) {
-            localStorage.setItem('token', registerHook.data.access_token)
+            localStorage.setItem('maesanAdminToken', registerHook.data.access_token)
             setStatus({ indicator: true, message: registerHook.data.message })
             navigate('/admin/dashboard')
         } else if (!registerHook.data && registerHook.error) {

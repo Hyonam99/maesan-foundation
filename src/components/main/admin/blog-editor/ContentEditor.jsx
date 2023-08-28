@@ -1,0 +1,186 @@
+/* eslint-disable quotes */
+import React, { useRef, useContext, useEffect } from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { ButtonCustom, ImageInput, QUILWYSWIG } from 'components/component-exports';
+import { Input, Box, Text, useDisclosure, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Button } from '@chakra-ui/react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useCreateBlog, useEditBlog } from 'services/api-hooks';
+import { BlogContext } from 'context/blogContext'
+import { LiaCameraSolid } from 'react-icons/lia'
+
+import './content-editor.scss';
+
+const ContentEditor = () => {
+    const { token, stat, setStat, blogContent, setBlogContent, screen, setScreen } = useContext(BlogContext)
+    const [searchParams] = useSearchParams();
+    const formikRef = useRef(null);
+    const cancelRef = useRef()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const createBlog = useCreateBlog(token)
+    const editBlog = useEditBlog(token)
+    const adminBlogId = searchParams.get('adminblogid')
+    const navigate = useNavigate()
+
+    const handleSubmit = () => {
+        if (formikRef.current) {
+            formikRef.current.handleSubmit();
+        }
+    }
+
+    const handleCancel = () => {
+        setScreen('CREATE')
+        setBlogContent()
+        formikRef.current.resetForm();
+    }
+
+    useEffect(() => {
+        if (screen !== 'EDIT') {
+            setBlogContent()
+            formikRef.current.setValues(
+                {
+                    title: '',
+                    theme: '',
+                    location: '',
+                    content: '',
+                    image: ''
+                }
+            )
+        }
+    }, [screen])
+
+    const handleBlogSubmit = () => {
+        console.log(blogContent)
+        console.log(adminBlogId)
+        console.log(stat, 'the stat')
+        if (stat === 'Discard') {
+            navigate('/admin/dashboard')
+        }
+        if (!adminBlogId && blogContent && stat === 'Publish') {
+            console.log('published')
+            createBlog.call({ ...blogContent, status: 'completed' })
+        }
+        if (!adminBlogId && blogContent && stat === 'Save') {
+            console.log('save')
+            createBlog.call({ ...blogContent, status: 'draft' })
+        }
+        if (adminBlogId && blogContent && stat === 'Publish') {
+            console.log('edit published')
+            editBlog.call({ ...blogContent, status: 'completed' })
+        }
+        if (adminBlogId && blogContent && stat === 'Save') {
+            console.log('edit save')
+            editBlog.call({ ...blogContent, status: 'draft' })
+        }
+    }
+
+    return (
+        <section className='content-editor-container'>
+            <section className='content-editor-container-header'>
+                <h3>{screen} BLOG</h3>
+                <section className='content-editor-container_buttons-wrapper'>
+                    <ButtonCustom title='Publish' type='button' className='btn-1' onClick={() => { handleSubmit(); setStat('Publish') }} />
+                    <ButtonCustom title='Save' type='button' className='btn-2' onClick={() => { handleSubmit(); setStat('Save') }} />
+                    <ButtonCustom title='Cancel' type='button' className='btn-3' onClick={() => { handleCancel(); setStat('Discard'); onOpen() }}/>
+                </section>
+            </section>
+            <section className='content-editor-container_form-wrapper'>
+                <Formik
+                    enableReinitialize={true}
+                    innerRef={formikRef}
+                    initialValues={
+                        {
+                            title: (screen === 'EDIT' && blogContent?.title) || '',
+                            theme: (screen === 'EDIT' && blogContent?.theme) || '',
+                            location: (screen === 'EDIT' && blogContent?.location) || '',
+                            content: (screen === 'EDIT' && blogContent?.content) || '',
+                            image: (screen === 'EDIT' && blogContent?.image?.[0]) || ''
+                        }
+                    }
+                    validationSchema={Yup.object({
+                        title: Yup.string().required('title is required'),
+                        theme: Yup.string().required('theme is required'),
+                        location: Yup.string().required('location is required'),
+                        content: Yup.string().required('content is required'),
+                        image: Yup.string().required('cover image is required')
+                    })}
+                    onSubmit={(values) => { setBlogContent(values); onOpen() }
+                    }
+                >
+                    {({ handleSubmit, getFieldProps, touched, errors, setFieldValue, values }) => (
+                        <form onSubmit={handleSubmit}>
+                            <Box className='inputs-holder'>
+                                <Text>Title</Text>
+                                <Input type='text' placeholder='enter blog title' name='title' {...getFieldProps('title')}/>
+                                {touched.title && errors.title
+                                    ? (<small>{errors.title}</small>)
+                                    : null}
+                            </Box>
+                            <Box className='input-holder-group'>
+                                <Box className='inputs-holder'>
+                                    <Text>Theme</Text>
+                                    <Input type='text' placeholder='enter blog theme' name='theme' {...getFieldProps('theme')}/>
+                                    {touched.theme && errors.theme
+                                        ? (<small>{errors.theme}</small>)
+                                        : null}
+                                </Box>
+                                <Box className='inputs-holder'>
+                                    <Text>Location</Text>
+                                    <Input type='text' placeholder='enter location' name='location' {...getFieldProps('location')}/>
+                                    {touched.location && errors.location
+                                        ? (<small>{errors.location}</small>)
+                                        : null}
+                                </Box>
+                            </Box>
+
+                            <Box className='inputs-holder'>
+                                <Text>Content</Text>
+                                <QUILWYSWIG
+                                    onChange={(e) => { setFieldValue('content', e) }}
+                                    quillValue={values.content}
+                                    validationMessage={errors.content}
+                                />
+                            </Box>
+                            <Box className='inputs-holder'>
+                                <ImageInput
+                                    title={`${blogContent?.image || values.image ? 'edit' : 'add'} cover Image`}
+                                    icon={<LiaCameraSolid size={19}/>}
+                                    onChange={(e) => { setFieldValue('image', e) }}
+                                    initialImage={values.image}
+                                    validationMessage={errors.image}
+                                />
+                            </Box>
+                        </form>
+                    )}
+                </Formik>
+            </section>
+
+            <AlertDialog
+                motionPreset='slideInBottom'
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+                isOpen={isOpen}
+                isCentered
+            >
+                <AlertDialogOverlay />
+
+                <AlertDialogContent>
+                    <AlertDialogHeader>{stat} Blog ?</AlertDialogHeader>
+                    <AlertDialogBody>
+                        Are you sure you want to {stat} this Blog ?
+                    </AlertDialogBody>
+                    <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                        Close
+                        </Button>
+                        <Button isLoading={editBlog.isLoading || createBlog.isLoading} colorScheme={stat !== 'Discard' ? 'green' : 'red'} ml={3} onClick={() => { handleBlogSubmit(); console.log('clicked') }}>
+                            {stat}
+                        </Button>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+        </section>
+    );
+};
+
+export default ContentEditor;

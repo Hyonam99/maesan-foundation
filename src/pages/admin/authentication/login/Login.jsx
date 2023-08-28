@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Box, Input, InputGroup, Text, Checkbox, Alert, AlertIcon } from '@chakra-ui/react';
 import { ButtonCustom } from 'components/component-exports';
-import { useLogin } from 'services/api-services';
+import { useLogin } from 'services/api-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Login = () => {
 
     useEffect(() => {
         if (loginHook.data && !loginHook.error) {
-            localStorage.setItem('token', loginHook.data.access_token)
+            localStorage.setItem('maesanAdminToken', loginHook.data.access_token)
             setStatus({ indicator: true, message: loginHook.data.message })
             navigate('/admin/dashboard')
         } else if (!loginHook.data && loginHook.error) {

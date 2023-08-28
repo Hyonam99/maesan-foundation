@@ -4,13 +4,19 @@ import App from './App';
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import { BlogContextProvider } from 'context/blogContext';
+import { CloudinaryContext } from 'cloudinary-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ChakraProvider>
-                <App />
+                <BlogContextProvider>
+                    <CloudinaryContext cloudName="your_cloud_name">
+                        <App />
+                    </CloudinaryContext>
+                </BlogContextProvider>
             </ChakraProvider>
         </BrowserRouter>
     </React.StrictMode>
