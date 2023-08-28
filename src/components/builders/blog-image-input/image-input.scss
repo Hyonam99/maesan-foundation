@@ -1,0 +1,80 @@
+@import '../../../base-style';
+
+.image-input-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .2rem;
+}
+.image-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: .6rem 1rem;
+    justify-content: flex-end;
+}
+
+.modal-body {
+    height: fit-content;
+    padding: .4rem;
+    
+    label {
+        padding: .6rem;
+        border: 1px dashed $primary-color;
+        border-radius: 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: .4rem;
+        cursor: pointer;
+    }
+    input[type='file'] {
+        display: none;
+    }
+    input[type='text'] {
+        padding: .2rem .6rem;
+        border: 1px solid $primary-color;
+        outline: 1px solid $primary-color !important;
+        border-radius: 8px;
+        width: 100%;
+
+        &:focus,
+        &:active {
+            border: 1px solid $primary-color !important;
+            outline: 1px solid $primary-color !important;
+            padding: .2rem .6rem !important;
+        }
+    }
+}
+
+.cover-image_preview-holder {
+    margin-top: .5rem;
+
+    img {
+        max-height: 270px !important;
+    }
+    .cover-image_preview-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.1rem;
+        padding: .6rem;
+
+        button {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: hsl(217, 95%, 57%);
+            letter-spacing: 1px;
+        }
+        button:nth-child(2) {
+            color: #e00808;
+            font-weight: normal;
+        }
+    }
+}

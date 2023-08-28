@@ -1,0 +1,55 @@
+@import '../../../../base-style';
+
+.admin-table-section {
+    padding: 6px;
+
+    .admin-table-container {
+        padding: 6px;
+        width: 72vw;
+
+        .menu-edit-item,
+        .menu-delete-item {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .menu-delete-item {
+            color: #e00808;
+            svg {
+                fill: #e00808;
+            }
+
+            &:hover {
+                color: $white-color;
+                background: #e00808;
+
+                svg {
+                    fill: $white-color;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 954px) {
+    .admin-table-section {
+        padding: 6px;
+    
+        .admin-table-container {
+            padding: 6px;
+            width: 88vw;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .admin-table-section {
+        padding: 6px;
+    
+        .admin-table-container {
+            padding: 6px;
+            width: 90vw;
+        }
+    }
+}

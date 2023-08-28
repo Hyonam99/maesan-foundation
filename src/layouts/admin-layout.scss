@@ -1,0 +1,33 @@
+@import '../base-style';
+
+.admin-layout_container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100dvh;
+
+    .admin-layout_container_nav {
+        max-width: 280px;
+    }
+
+    .admin-layout_container_content-display {
+        background: $secondary-color;
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 954px) {
+    .admin-layout_container {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 100dvh;
+    
+        .admin-layout_container_nav {
+            max-width: 98.5vw;
+        }
+
+        .admin-layout_container_content-display {
+            padding: 2rem 1rem;
+            max-width: 99.5vw;
+        }
+    }
+}

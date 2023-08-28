@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AdminNav } from 'components/component-exports';
+
+import './admin-layout.scss'
 
 const AdminLayout = ({ children }) => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('maesanAdminToken')
     const [routeGuard, setRouteGuard] = useState(true)
     const navigate = useNavigate()
 
@@ -16,7 +19,14 @@ const AdminLayout = ({ children }) => {
     }, [token])
     return (
         <>
-            <div>{!routeGuard && children}</div>
+            <section className='admin-layout_container'>
+                <section className='admin-layout_container_nav'>
+                    <AdminNav />
+                </section>
+                <section className='admin-layout_container_content-display'>
+                    {!routeGuard && children}
+                </section>
+            </section>
         </>
     )
 };
