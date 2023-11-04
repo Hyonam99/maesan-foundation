@@ -7,13 +7,15 @@ import reportWebVitals from './reportWebVitals';
 import { BlogContextProvider } from 'context/blogContext';
 import { CloudinaryContext } from 'cloudinary-react';
 
+const cloudName = 'maesan-product';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <ChakraProvider>
                 <BlogContextProvider>
-                    <CloudinaryContext cloudName="your_cloud_name">
+                    <CloudinaryContext cloudName={cloudName}>
                         <App />
                     </CloudinaryContext>
                 </BlogContextProvider>

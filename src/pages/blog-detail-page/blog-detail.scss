@@ -9,6 +9,36 @@
         flex-direction: column;
         gap: 1rem;
 
+        .blog-detail-editable {
+            
+            >p {
+                >span {
+                    >div {
+                        button {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+
+            thead,
+            tbody {
+                tr {
+                    td[data-tool-cell],
+                    th[data-tool-cell] {
+                        button {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+            tfoot {
+                button {
+                    display: none;
+                }
+            }
+        }
+
         .blog-detail_content_navigation {
             display: flex;
             align-items: center;

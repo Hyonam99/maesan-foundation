@@ -18,13 +18,10 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         if (tabIndex === 0) {
-            setFilterKey('All Blogs')
+            setFilterKey('draft')
         }
         if (tabIndex === 1) {
-            setFilterKey('Drafts')
-        }
-        if (tabIndex === 2) {
-            setFilterKey('Published')
+            setFilterKey('completed')
         }
     }, [tabIndex])
     return (
@@ -32,14 +29,10 @@ const AdminDashboard = () => {
             <h3>Good Morning</h3>
             <Tabs isFitted variant='enclosed' onChange={(index) => setTabIndex(index)}>
                 <TabList mb='1em'>
-                    <Tab>All Blogs</Tab>
                     <Tab>Drafts</Tab>
                     <Tab>Published</Tab>
                 </TabList>
                 <TabPanels>
-                    <TabPanel>
-                        <AdminTable filterKey={filterKey} data={blogs}/>
-                    </TabPanel>
                     <TabPanel>
                         <AdminTable filterKey={filterKey} data={blogs}/>
                     </TabPanel>

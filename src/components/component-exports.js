@@ -17,8 +17,8 @@ import AdminNav from './main/admin/admin-nav/AdminNav';
 import AdminDashboard from './main/admin/admin-dashboard/AdminDashboard';
 import AdminTable from './main/admin/admin-table/AdminTable';
 import ContentEditor from './main/admin/blog-editor/ContentEditor';
-import QUILWYSWIG from './builders/quil-wyswig/QUILWYSWIG';
 import ImageInput from './builders/blog-image-input/ImageInput';
+import MWYSWIG from './builders/maesan-wyswig/MWYSWIG'
 
 export {
     NavBar,
@@ -40,6 +40,6 @@ export {
     AdminDashboard,
     AdminTable,
     ContentEditor,
-    QUILWYSWIG,
-    ImageInput
+    ImageInput,
+    MWYSWIG
 };

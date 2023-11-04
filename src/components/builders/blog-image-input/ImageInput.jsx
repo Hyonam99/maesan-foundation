@@ -13,54 +13,41 @@ import { LiaCameraSolid } from 'react-icons/lia';
 
 const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) => {
     const [imagePreview, setImagePreview] = useState(initialImage);
-    // const [cloudImage, setCloudImage] = useState('');
     const [isShown, setIsShown] = useState(false);
-
-    const handleImageChange = (event) => {
+    const [loading, setLoading] = useState(false);
+    const handleFileUpload = async (event) => {
         const file = event.target.files[0];
-        // setCloudImage(event.target.files[0]);
-        const reader = new FileReader();
+        const uploadPreset = 'maesan-open-cdn';
+        const folder = 'maesan-images';
+        const cloudName = 'maesan-product';
 
-        reader.onload = (e) => {
-            setImagePreview(e.target.result);
-            onChange(e.target.result)
-        };
+        if (file) {
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', uploadPreset);
+                formData.append('folder', folder);
 
-        reader.readAsDataURL(file);
+                const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                setLoading(true)
+                const data = await response.json();
+                setImagePreview(data?.secure_url)
+                onChange(data?.secure_url)
+                setLoading(false)
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        }
+
     };
-
-    // const handleUpload = async () => {
-    //     if (cloudImage) {
-    //         const formData = new FormData();
-    //         formData.append('file', cloudImage);
-    //         formData.append('upload_preset', 'your_upload_preset'); // Replace with your upload preset
-
-    //         try {
-    //             const response = await fetch(
-    //                 // eslint-disable-next-line quotes
-    //                 `https://api.cloudinary.com/v1_1/maesan-product/image/upload`,
-    //                 {
-    //                     method: 'POST',
-    //                     body: formData,
-    //                 }
-    //             );
-
-    //             if (response.ok) {
-    //                 // Handle success
-    //                 console.log('Image uploaded successfully');
-    //             } else {
-    //                 // Handle error
-    //                 console.error('Image upload failed');
-    //             }
-    //         } catch (error) {
-    //             console.error('Error uploading image', error);
-    //         }
-    //     }
-    // };
-
     const handleDelete = () => {
         setImagePreview('');
-        onChange('')
+        onChange('');
+        setIsShown(false)
     };
 
     return (
@@ -82,9 +69,10 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                         <label htmlFor='fileTag'>
                             Upload Image
                             <LiaCameraSolid size={24}/>
-                            <input id="fileTag" type='file' accept='image/*' onChange={handleImageChange}/>
+                            <input id="fileTag" type='file' accept='image/*' onChange={handleFileUpload}/>
                         </label>
-                        {initialImage && (
+                        {loading && <p>Uploading image, please wait</p>}
+                        {(imagePreview || initialImage) && (
                             <div className='cover-image_preview-holder'>
                                 <img
                                     src={imagePreview}
@@ -92,8 +80,6 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                                     className='cover-image-preview'
                                 />
                                 <div className='cover-image_preview-buttons'>
-                                    <button onClick={() => setIsShown(false)}>Save</button>
-                                    {/* <button onClick={handleUpload}>Upload</button> */}
                                     <button onClick={handleDelete}>Delete</button>
                                 </div>
                             </div>

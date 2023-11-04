@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 /* eslint-disable react/prop-types */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
     Table,
     Thead,
@@ -33,7 +33,7 @@ import { useDeleteBlog } from 'services/api-hooks';
 import { BlogContext } from 'context/blogContext'
 
 const AdminTable = ({ filterKey, data }) => {
-    const { token, setBlogContent, setScreen } = useContext(BlogContext)
+    const { token, setScreen } = useContext(BlogContext)
     const filteredBlogs = data?.filter((blog) => blog?.status ? blog?.status === filterKey : blog)
     const [blogId, setBlogId] = useState('')
     const deleteBlog = useDeleteBlog(token)
@@ -42,15 +42,13 @@ const AdminTable = ({ filterKey, data }) => {
 
     const handleDelete = () => {
         deleteBlog.call(blogId)
+    }
+
+    useEffect(() => {
         if (deleteBlog.isSuccess) {
             onClose()
         }
-    }
-
-    const handleEdit = (blog) => {
-        setBlogContent(blog)
-        setScreen('EDIT')
-    }
+    }, [deleteBlog.isSuccess])
 
     return (
         <section className='admin-table-section'>
@@ -81,7 +79,7 @@ const AdminTable = ({ filterKey, data }) => {
                                             <MenuButton><CiMenuKebab /></MenuButton>
                                             <MenuList>
                                                 <Link to={`/admin/edit-blog/?&adminblogid=${item._id}`}>
-                                                    <MenuItem className='menu-edit-item' onClick={() => { handleEdit(item) }}>
+                                                    <MenuItem className='menu-edit-item' onClick={() => { setScreen('EDIT') }}>
                                                         <CiEdit /> Edit
                                                     </MenuItem>
                                                 </Link>
