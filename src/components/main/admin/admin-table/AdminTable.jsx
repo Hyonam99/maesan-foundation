@@ -47,6 +47,7 @@ const AdminTable = ({ filterKey, data }) => {
     useEffect(() => {
         if (deleteBlog.isSuccess) {
             onClose()
+            window.location.reload()
         }
     }, [deleteBlog.isSuccess])
 

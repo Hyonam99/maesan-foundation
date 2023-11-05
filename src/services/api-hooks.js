@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginAdmin, registerAdmin, deleteBlog, createBlog, editBlog, getMaesanBlog } from './api-services';
+import { loginAdmin, registerAdmin, deleteBlog, createBlog, editBlog, getMaesanBlog, uploadImage } from './api-services';
 
 export const useRegister = () => {
 
@@ -50,8 +50,8 @@ export const useCreateBlog = (token) => {
         call: (content) => {
             setIsLoading(true)
             createBlog(content, token)
-                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null); console.log(res) })
-                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null); console.log(err) })
+                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null) })
+                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null) })
         },
         data,
         isLoading,
@@ -71,8 +71,8 @@ export const useEditBlog = (token) => {
         call: (blogId, content) => {
             setIsLoading(true)
             editBlog(blogId, content, token)
-                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null); console.log(res) })
-                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null); console.log(err) })
+                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null) })
+                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null) })
         },
         data,
         isLoading,
@@ -92,8 +92,8 @@ export const useDeleteBlog = (token) => {
         call: (blogId) => {
             setIsLoading(true)
             deleteBlog(blogId, token)
-                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null); console.log(res) })
-                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null); console.log(err) })
+                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null) })
+                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null) })
         },
         data,
         isLoading,
@@ -110,11 +110,42 @@ export const useGetBlog = () => {
     const [error, setError] = useState(null);
 
     return {
-        call: (blogId) => {
+        getBlog: (blogId) => {
             setIsLoading(true)
             getMaesanBlog(blogId)
                 .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null) })
                 .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null) })
+        },
+        data,
+        isLoading,
+        error,
+        isSuccess
+    }
+}
+
+export const useUploadImage = () => {
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [error, setError] = useState(null);
+
+    return {
+        upload: (event) => {
+            const file = event.target.files[0];
+            const uploadPreset = 'maesan-open-cdn';
+            const folder = 'maesan-images';
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', uploadPreset);
+                formData.append('folder', folder);
+                setIsLoading(true)
+                uploadImage(formData)
+                    .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null) })
+                    .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setData(null) })
+            }
         },
         data,
         isLoading,

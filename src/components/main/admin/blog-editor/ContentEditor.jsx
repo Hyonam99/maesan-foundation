@@ -24,11 +24,10 @@ import {
     AlertIcon,
 } from "@chakra-ui/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useCreateBlog, useEditBlog } from "services/api-hooks";
+import { useCreateBlog, useEditBlog, useGetBlog } from "services/api-hooks";
 import { BlogContext } from "context/blogContext";
 import { LiaCameraSolid } from "react-icons/lia";
 import "./content-editor.scss";
-import { getMaesanBlog } from "services/api-services";
 
 const ContentEditor = () => {
     const {
@@ -51,23 +50,46 @@ const ContentEditor = () => {
     const editBlog = useEditBlog(token);
     const adminBlogId = searchParams.get("adminblogid");
     const navigate = useNavigate();
-    const [displayImage, setDisplayImage] = useState(stateBlogContent?.image);
     const [hasError, setHasError] = useState(false);
+    const [newRef, setNewRef] = useState(null);
+
+    const { data, isLoading, isSuccess, getBlog } = useGetBlog()
 
     useEffect(() => {
-        getMaesanBlog(adminBlogId)
-            .then(res => { setBlogContent(res.data); setPersistBlog(res.data) })
+        if (adminBlogId) {
+            getBlog(adminBlogId)
+        }
     }, [adminBlogId])
+
+    const getRef = (itd) => {
+        setNewRef(itd)
+    };
+
+    useEffect(() => {
+        if (data || isSuccess) {
+            const obj = { ...data?.data, image: data?.data?.image?.[0] }
+            setBlogContent(obj); setPersistBlog(obj)
+            formikRef.current.setValues({
+                title: stateBlogContent?.title,
+                theme: stateBlogContent?.theme,
+                location: stateBlogContent?.location,
+                content: stateBlogContent?.content,
+                image: stateBlogContent?.image
+            })
+            newRef.current.setMarkdown(stateBlogContent?.content ?? "")
+        }
+    }, [data, isSuccess])
 
     const handleSubmit = () => {
         if (formikRef.current) {
-            formikRef.current.handleSubmit();
+            formikRef.current?.handleSubmit();
         }
     };
 
     const handleCancel = () => {
         setScreen("CREATE");
         setBlogContent();
+        flushPersistBlogs();
         formikRef.current.resetForm();
     };
 
@@ -82,7 +104,6 @@ const ContentEditor = () => {
             createBlog.call({ ...blogContent, status: "draft" });
         }
         if (adminBlogId && blogContent && stat === "Publish") {
-            console.log('edit published')
             editBlog.call(adminBlogId, { ...blogContent, status: "completed" });
         }
         if (adminBlogId && blogContent && stat === "Save") {
@@ -154,30 +175,15 @@ const ContentEditor = () => {
             </section>
             <section className="content-editor-container_form-wrapper">
                 <Formik
-                    enableReinitialize={true}
                     innerRef={formikRef}
+                    enableReinitialize={isLoading}
                     initialValues={
                         {
-                            title:
-								stateBlogContent.title
-								|| (screen === "EDIT" && blogContent?.title)
-								|| "",
-                            theme:
-								stateBlogContent.theme
-								|| (screen === "EDIT" && blogContent?.theme)
-								|| "",
-                            location:
-								stateBlogContent.location
-								|| (screen === "EDIT" && blogContent?.location)
-								|| "",
-                            content:
-								stateBlogContent.content
-								|| (screen === "EDIT" && blogContent?.content)
-								|| "",
-                            image:
-								stateBlogContent.image
-								|| (screen === "EDIT" && blogContent?.image?.[0])
-								|| ""
+                            title: stateBlogContent?.title ?? "",
+                            theme: stateBlogContent?.theme ?? "",
+                            location: stateBlogContent?.location ?? "",
+                            content: stateBlogContent?.content ?? "",
+                            image: stateBlogContent?.image ?? ""
                         }
                     }
                     validationSchema={Yup.object({
@@ -266,20 +272,19 @@ const ContentEditor = () => {
                             <Box className="inputs-holder">
                                 <ImageInput
                                     title={`${
-                                        blogContent?.image || values.image ? "edit" : "add"
+                                        values.image ? "edit" : "add"
                                     } cover Image`}
                                     icon={<LiaCameraSolid size={19} />}
                                     onChange={(e) => {
                                         setFieldValue("image", e);
                                         setPersistBlog({ ...persistBlog, image: e });
-                                        setDisplayImage(e)
                                     }}
                                     initialImage={values.image}
                                     validationMessage={errors.image}
                                 />
                                 {values.image && (
                                     <Box className="content-image-preview">
-                                        <img src={displayImage !== "" ? displayImage : values.image} alt="cover-image" />
+                                        <img src={values.image} alt="cover-image" />
                                     </Box>
                                 )}
                             </Box>
@@ -292,6 +297,7 @@ const ContentEditor = () => {
                                     }}
                                     quillValue={values.content}
                                     validationMessage={errors.content}
+                                    onRef={getRef}
                                 />
                             </Box>
                         </form>

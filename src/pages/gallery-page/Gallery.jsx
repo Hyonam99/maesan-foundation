@@ -24,7 +24,6 @@ const Gallery = () => {
                                 width='100%'
                                 alt={`gallery-card-${i}`}
                                 cursor='pointer'
-                                // onClick={onOpen}
                             />
                         </article>
                     ))}

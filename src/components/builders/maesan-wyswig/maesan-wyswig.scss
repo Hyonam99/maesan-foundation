@@ -1,7 +1,7 @@
 @import '../../../base-style';
 
 .main-editor {
-    //styling the mdx editor toolbar.
+    //styling the editor toolbar.
     div[role='toolbar'] {
         background: white;
         border-bottom: 1px solid grey;
@@ -37,7 +37,7 @@
         }
     }
 
-    //styling the layer position for the link input dialog 
+    //styling the link input dialog 
     div[data-radix-popper-content-wrapper] {
         z-index: 500 !important;
     }
@@ -64,6 +64,40 @@
         h1, h2, h3, h4, h5, h6 {
             margin-block-start: 0;
             margin-block-end: 0;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.25em;
+            margin-top: 0;
+            margin-bottom: 0.8888889em;
+            line-height: 1.1111111;
+        }
+        h2 {
+            font-weight: 700;
+            font-size: 1.5em;
+            line-height: 1.3333333;
+        }
+        h3 {
+            font-weight: 600;
+            font-size: 1.25em;
+            line-height: 1.6;
+        }
+        h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        blockquote {
+            font-weight: 500;
+            font-style: italic;
+            color: rgb(17, 24, 39);
+            border-left-width: 0.25rem;
+            border-left-color: rgb(229, 231, 235);
+            quotes: "\201C""\201D""\2018""\2019";
+            margin-top: 1.6em;
+            margin-bottom: 1.6em;
+            padding-left: 1em;
         }
 
         img {

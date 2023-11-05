@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import {
     MDXEditor,
     headingsPlugin,
@@ -21,54 +21,20 @@ import {
 import { Box } from '@chakra-ui/react';
 import '@mdxeditor/editor/style.css';
 import './maesan-wyswig.scss'
+import { handleFileUpload } from 'services/api-services';
 
-const MWYSWIG = ({ onChange, quillValue, validationMessage }) => {
+const MWYSWIG = ({ onChange, quillValue, validationMessage, onRef }) => {
 
-    const handleFileUpload = async (file) => {
-        const uploadPreset = 'maesan-open-cdn';
-        const folder = 'maesan-images';
-        const cloudName = 'maesan-product';
-
-        if (file) {
-            try {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', uploadPreset);
-                formData.append('folder', folder);
-
-                const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                const data = await response.json();
-                return data?.secure_url
-            } catch (error) {
-                console.error('Error uploading image:', error);
-            }
-        }
-
-    };
-
-    const ref = useRef(null)
-
-    const memoizeSetMarkdown = useCallback(
-        (quillValue) => {
-            ref.current?.setMarkdown(quillValue ?? '');
-        }, []
-    );
-
-    useEffect(() => {
-        memoizeSetMarkdown(quillValue);
-    }, [quillValue]);
+    const mdRef = useRef(null)
+    onRef(mdRef)
 
     return (
         <>
             <Box>
                 <MDXEditor
                     markdown={quillValue ?? ''}
-                    ref={ref}
                     onChange={(e) => onChange(e)}
+                    ref={mdRef}
                     className={'main-editor'}
                     contentEditableClassName={'editable'}
                     placeholder={''}

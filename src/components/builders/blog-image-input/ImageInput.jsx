@@ -1,49 +1,30 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Modal,
     ModalBody,
     ModalContent,
     ModalOverlay,
+    CircularProgress,
+    Box
 } from '@chakra-ui/react';
 
 import { RxCross2 } from 'react-icons/rx';
 import './image-input.scss';
 import { LiaCameraSolid } from 'react-icons/lia';
+import { useUploadImage } from 'services/api-hooks';
 
 const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) => {
     const [imagePreview, setImagePreview] = useState(initialImage);
     const [isShown, setIsShown] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const handleFileUpload = async (event) => {
-        const file = event.target.files[0];
-        const uploadPreset = 'maesan-open-cdn';
-        const folder = 'maesan-images';
-        const cloudName = 'maesan-product';
+    const { data, isLoading, isSuccess, upload } = useUploadImage()
 
-        if (file) {
-            try {
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', uploadPreset);
-                formData.append('folder', folder);
-
-                const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                setLoading(true)
-                const data = await response.json();
-                setImagePreview(data?.secure_url)
-                onChange(data?.secure_url)
-                setLoading(false)
-            } catch (error) {
-                console.error('Error uploading image:', error);
-            }
+    useEffect(() => {
+        if (isSuccess && data) {
+            setImagePreview(data?.secure_url)
+            onChange(data?.secure_url)
         }
-
-    };
+    }, [data, isSuccess])
     const handleDelete = () => {
         setImagePreview('');
         onChange('');
@@ -52,10 +33,10 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
 
     return (
         <div>
-            <div className='image-input-display'>
+            <Box className='image-input-display'>
                 <button type='button' onClick={(e) => { setIsShown(true) }} className='image-upload-btn'>{icon} {title}</button>
                 {!initialImage && <small>{validationMessage}</small>}
-            </div>
+            </Box>
 
             <Modal
                 onClose={() => setIsShown(false)}
@@ -69,20 +50,25 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                         <label htmlFor='fileTag'>
                             Upload Image
                             <LiaCameraSolid size={24}/>
-                            <input id="fileTag" type='file' accept='image/*' onChange={handleFileUpload}/>
+                            <input id="fileTag" type='file' accept='image/*' onChange={upload}/>
                         </label>
-                        {loading && <p>Uploading image, please wait</p>}
+                        {isLoading
+                            && <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
+                                <CircularProgress isIndeterminate size='24px' thickness='6px' color='#d4af37' marginRight={2}/>
+                                <p>Uploading image. Please wait...</p>
+                            </Box>
+                        }
                         {(imagePreview || initialImage) && (
-                            <div className='cover-image_preview-holder'>
+                            <Box className='cover-image_preview-holder'>
                                 <img
                                     src={imagePreview}
                                     alt='Preview'
                                     className='cover-image-preview'
                                 />
-                                <div className='cover-image_preview-buttons'>
+                                <Box className='cover-image_preview-buttons'>
                                     <button onClick={handleDelete}>Delete</button>
-                                </div>
-                            </div>
+                                </Box>
+                            </Box>
                         )}
                     </ModalBody>
                 </ModalContent>
