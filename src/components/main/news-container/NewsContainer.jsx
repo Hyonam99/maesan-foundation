@@ -16,12 +16,13 @@ const NewsContainer = ({ mini, selectedId }) => {
     }, [selectedId])
 
     const filteredBlogs = blogs?.filter((blog) => selectedId ? blog._id !== selectedId : blog)
+    const filterPublishedBlogs = filteredBlogs?.filter((blog) => blog?.status !== 'draft')
 
     return (
         <Container maxW='container.xl' className='news-container' p={5}>
             {!blogs
                 ? <CustomSpinner />
-                : filteredBlogs?.slice(0, mini).map((news, i) => (
+                : filterPublishedBlogs?.slice(0, mini).map((news, i) => (
                     <NewsCard
                         key={`news-${i + 1}`}
                         imgSrc={news.image}

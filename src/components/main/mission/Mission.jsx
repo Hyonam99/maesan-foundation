@@ -5,8 +5,6 @@ import { missionContent } from '../../../mocked-data/mocked-data';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Grid } from 'swiper/modules';
 import { Box } from '@chakra-ui/react'
-
-// Import Swiper styles
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 

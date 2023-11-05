@@ -5,6 +5,17 @@ import { Avatar, Box, Heading, Image } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeftLong, FaLocationDot } from 'react-icons/fa6';
 import { getMaesanBlog } from '../../services/api-services.js'
+import {
+    MDXEditor,
+    headingsPlugin,
+    listsPlugin,
+    quotePlugin,
+    linkDialogPlugin,
+    imagePlugin,
+    linkPlugin,
+    tablePlugin
+} from '@mdxeditor/editor';
+import '@mdxeditor/editor/style.css';
 
 import './blog-detail.scss';
 
@@ -47,7 +58,24 @@ const BlogDetail = () => {
                             <small className='location'> <FaLocationDot color='#860707' size={20}/>{blogDetail?.location}</small>
                             <small>{new Date(blogDetail?.createdAt).toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</small>
                         </Box>
-                        <p>{blogDetail?.content}</p>
+                        <Box>
+                            <MDXEditor
+                                markdown={blogDetail?.content ?? ''}
+                                className={'blog-detail-main'}
+                                readOnly={true}
+                                contentEditableClassName={'blog-detail-editable'}
+                                placeholder={''}
+                                plugins={[
+                                    headingsPlugin(),
+                                    listsPlugin(),
+                                    quotePlugin(),
+                                    imagePlugin(),
+                                    linkDialogPlugin({ linkAutocompleteSuggestions: [] }),
+                                    linkPlugin(),
+                                    tablePlugin()
+                                ]}
+                            />
+                        </Box>
                     </section>
 
                     <section className='blog-detail_other-news'>

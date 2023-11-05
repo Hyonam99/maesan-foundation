@@ -7,7 +7,6 @@ import Strategy from './main/strategy/Strategy';
 import Mission from './main/mission/Mission';
 import NewsContainer from './main/news-container/NewsContainer';
 import Banner from './main/banner/Banner';
-import GalleryCarousel from './main/gallery-carousel/GalleryCarousel';
 import InfoCard from './builders/info-card/InfoCard';
 import NewsCard from './builders/news-card/NewsCard';
 import ButtonCustom from './builders/custom-button/ButtonCustom';
@@ -17,8 +16,8 @@ import AdminNav from './main/admin/admin-nav/AdminNav';
 import AdminDashboard from './main/admin/admin-dashboard/AdminDashboard';
 import AdminTable from './main/admin/admin-table/AdminTable';
 import ContentEditor from './main/admin/blog-editor/ContentEditor';
-import QUILWYSWIG from './builders/quil-wyswig/QUILWYSWIG';
 import ImageInput from './builders/blog-image-input/ImageInput';
+import MWYSWIG from './builders/maesan-wyswig/MWYSWIG'
 
 export {
     NavBar,
@@ -34,12 +33,11 @@ export {
     NewsCard,
     NewsContainer,
     Banner,
-    GalleryCarousel,
     CustomSpinner,
     AdminNav,
     AdminDashboard,
     AdminTable,
     ContentEditor,
-    QUILWYSWIG,
-    ImageInput
+    ImageInput,
+    MWYSWIG
 };

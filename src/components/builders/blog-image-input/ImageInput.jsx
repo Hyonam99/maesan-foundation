@@ -1,74 +1,42 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Modal,
     ModalBody,
     ModalContent,
     ModalOverlay,
+    CircularProgress,
+    Box
 } from '@chakra-ui/react';
 
 import { RxCross2 } from 'react-icons/rx';
 import './image-input.scss';
 import { LiaCameraSolid } from 'react-icons/lia';
+import { useUploadImage } from 'services/api-hooks';
 
 const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) => {
     const [imagePreview, setImagePreview] = useState(initialImage);
-    // const [cloudImage, setCloudImage] = useState('');
     const [isShown, setIsShown] = useState(false);
+    const { data, isLoading, isSuccess, upload } = useUploadImage()
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        // setCloudImage(event.target.files[0]);
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            setImagePreview(e.target.result);
-            onChange(e.target.result)
-        };
-
-        reader.readAsDataURL(file);
-    };
-
-    // const handleUpload = async () => {
-    //     if (cloudImage) {
-    //         const formData = new FormData();
-    //         formData.append('file', cloudImage);
-    //         formData.append('upload_preset', 'your_upload_preset'); // Replace with your upload preset
-
-    //         try {
-    //             const response = await fetch(
-    //                 // eslint-disable-next-line quotes
-    //                 `https://api.cloudinary.com/v1_1/maesan-product/image/upload`,
-    //                 {
-    //                     method: 'POST',
-    //                     body: formData,
-    //                 }
-    //             );
-
-    //             if (response.ok) {
-    //                 // Handle success
-    //                 console.log('Image uploaded successfully');
-    //             } else {
-    //                 // Handle error
-    //                 console.error('Image upload failed');
-    //             }
-    //         } catch (error) {
-    //             console.error('Error uploading image', error);
-    //         }
-    //     }
-    // };
-
+    useEffect(() => {
+        if (isSuccess && data) {
+            setImagePreview(data?.secure_url)
+            onChange(data?.secure_url)
+        }
+    }, [data, isSuccess])
     const handleDelete = () => {
         setImagePreview('');
-        onChange('')
+        onChange('');
+        setIsShown(false)
     };
 
     return (
         <div>
-            <div className='image-input-display'>
+            <Box className='image-input-display'>
                 <button type='button' onClick={(e) => { setIsShown(true) }} className='image-upload-btn'>{icon} {title}</button>
                 {!initialImage && <small>{validationMessage}</small>}
-            </div>
+            </Box>
 
             <Modal
                 onClose={() => setIsShown(false)}
@@ -82,21 +50,25 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                         <label htmlFor='fileTag'>
                             Upload Image
                             <LiaCameraSolid size={24}/>
-                            <input id="fileTag" type='file' accept='image/*' onChange={handleImageChange}/>
+                            <input id="fileTag" type='file' accept='image/*' onChange={upload}/>
                         </label>
-                        {initialImage && (
-                            <div className='cover-image_preview-holder'>
+                        {isLoading
+                            && <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
+                                <CircularProgress isIndeterminate size='24px' thickness='6px' color='#d4af37' marginRight={2}/>
+                                <p>Uploading image. Please wait...</p>
+                            </Box>
+                        }
+                        {(imagePreview || initialImage) && (
+                            <Box className='cover-image_preview-holder'>
                                 <img
                                     src={imagePreview}
                                     alt='Preview'
                                     className='cover-image-preview'
                                 />
-                                <div className='cover-image_preview-buttons'>
-                                    <button onClick={() => setIsShown(false)}>Save</button>
-                                    {/* <button onClick={handleUpload}>Upload</button> */}
+                                <Box className='cover-image_preview-buttons'>
                                     <button onClick={handleDelete}>Delete</button>
-                                </div>
-                            </div>
+                                </Box>
+                            </Box>
                         )}
                     </ModalBody>
                 </ModalContent>

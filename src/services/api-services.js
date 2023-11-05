@@ -44,7 +44,34 @@ export const deleteBlog = async (blogId, token) => {
     return (await response).data
 }
 
-export const uploadImage = async (imageData) => {
-    const response = maesanService.post(`https://api.cloudinary.com/v1_1/your_cloud_name/image/upload`, imageData)
+export const uploadImage = async (formData) => {
+    const cloudName = 'maesan-product';
+    const response = maesanService.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData)
     return (await response).data
-}
+};
+
+export const handleFileUpload = async (file) => {
+    const uploadPreset = 'maesan-open-cdn';
+    const folder = 'maesan-images';
+    const cloudName = 'maesan-product';
+
+    if (file) {
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', uploadPreset);
+            formData.append('folder', folder);
+
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+            return data?.secure_url
+        } catch (error) {
+            console.error('Error uploading image:', error);
+        }
+    }
+
+};

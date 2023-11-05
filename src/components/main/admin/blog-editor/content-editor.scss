@@ -53,10 +53,8 @@
 
 
     .content-editor-container_form-wrapper {
-        // border: 2px solid red;
 
         form {
-            // border: 2px solid purple;
             .input-holder-group {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -72,8 +70,13 @@
                     font-size: 18px;
                 }
                 input {
-                    // border: 1px solid blue;
                     background: white;
+                }
+
+                .content-image-preview {
+                    img {
+                        max-height: 270px !important;
+                    }
                 }
             }
 
@@ -136,10 +139,8 @@
     
     
         .content-editor-container_form-wrapper {
-            // border: 2px solid red;
     
             form {
-                // border: 2px solid purple;
                 .input-holder-group {
                     display: grid;
                     grid-template-columns: 1fr;
@@ -152,7 +153,6 @@
                         font-size: 18px;
                     }
                     input {
-                        // border: 1px solid blue;
                         background: white;
                     }
                 }
