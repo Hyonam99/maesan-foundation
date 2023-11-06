@@ -66,9 +66,10 @@ const ContentEditor = () => {
     };
 
     useEffect(() => {
-        if (data || isSuccess) {
+        if (data && isSuccess) {
             const obj = { ...data?.data, image: data?.data?.image?.[0] }
-            setBlogContent(obj); setPersistBlog(obj)
+            setPersistBlog(obj);
+            setBlogContent(obj);
             formikRef.current.setValues({
                 title: stateBlogContent?.title,
                 theme: stateBlogContent?.theme,

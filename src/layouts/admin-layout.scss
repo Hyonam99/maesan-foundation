@@ -23,11 +23,16 @@
     
         .admin-layout_container_nav {
             max-width: 98.5vw;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: white;
         }
 
         .admin-layout_container_content-display {
             padding: 2rem 1rem;
             max-width: 99.5vw;
+            min-height: 92dvh;
         }
     }
 }

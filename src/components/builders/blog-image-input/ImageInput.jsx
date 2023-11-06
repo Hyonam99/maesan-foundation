@@ -42,6 +42,7 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                 onClose={() => setIsShown(false)}
                 isOpen={isShown}
                 scrollBehavior='inside'
+                isCentered
             >
                 <ModalOverlay />
                 <ModalContent>
@@ -61,7 +62,7 @@ const ImageInput = ({ title, icon, onChange, initialImage, validationMessage }) 
                         {(imagePreview || initialImage) && (
                             <Box className='cover-image_preview-holder'>
                                 <img
-                                    src={imagePreview}
+                                    src={imagePreview || initialImage}
                                     alt='Preview'
                                     className='cover-image-preview'
                                 />
