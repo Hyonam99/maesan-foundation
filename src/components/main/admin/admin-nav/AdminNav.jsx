@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* eslint-disable quotes */
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import './admin-nav.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { RxDashboard } from 'react-icons/rx';
 import { BsJournalBookmarkFill } from 'react-icons/bs';
 import { RiLogoutBoxLine } from 'react-icons/ri';
@@ -8,31 +9,41 @@ import Logo from 'assets/custom-icons/logo-full.png';
 import LogoShort from 'assets/custom-icons/maesan-logo.png';
 import { logoutAdmin } from 'services/api-services';
 import { BlogContext } from 'context/blogContext'
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineMenu, AiOutlineUserAdd } from 'react-icons/ai';
 import { Drawer, DrawerBody, DrawerContent, DrawerOverlay, useDisclosure } from '@chakra-ui/react';
-
-const adminLinks = [
-    { name: 'Dashboard', linkUrl: '/admin/dashboard', icon: RxDashboard },
-    { name: 'Create Blogs', linkUrl: '/admin/edit-blog', icon: BsJournalBookmarkFill },
-    { name: 'Log Out', linkUrl: '#', icon: RiLogoutBoxLine },
-];
 
 const AdminNav = () => {
     const { setScreen } = useContext(BlogContext)
     const [isDefault, setIsDefault] = useState(0);
     const navigate = useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = React.useRef()
+    const btnRef = useRef()
+    const [searchParams] = useSearchParams()
+    const adminBlogId = searchParams.get('adminblogid');
+
+    const adminLinks = [
+        { name: 'Dashboard', linkUrl: '/admin/dashboard', icon: RxDashboard },
+        { name: `${adminBlogId ? 'Editing Blog' : 'Create Blog'}`, linkUrl: `${adminBlogId ? '#' : '/admin/edit-blog'}`, icon: BsJournalBookmarkFill },
+        { name: 'Add user', linkUrl: '/admin/register', icon: AiOutlineUserAdd },
+        { name: 'Log Out', linkUrl: '#', icon: RiLogoutBoxLine },
+    ];
 
     useEffect(() => {
-        if (isDefault === 2) {
+        if (isDefault === 3) {
             logoutAdmin()
             navigate('/admin/login')
         }
-        if (isDefault === 1) {
+        if (isDefault === 1 && !adminBlogId) {
             setScreen('CREATE')
         }
     }, [isDefault])
+
+    useEffect(() => {
+        if (adminBlogId) {
+            setIsDefault(1)
+            setScreen('EDIT')
+        }
+    }, [adminBlogId])
 
     return (
         <>
@@ -45,10 +56,11 @@ const AdminNav = () => {
                 </div>
                 <ul>
                     {adminLinks.map((link, i) => (
-                        <Link to={link.linkUrl} key={i + link.name}>
+                        <Link to={link.linkUrl} key={i + link.name} aria-disabled={adminBlogId !== '' && (adminLinks.indexOf(link) === isDefault)}>
                             <li
                                 onClick={() => setIsDefault(i) }
                                 className={adminLinks.indexOf(link) === isDefault ? 'is-selected' : null}
+                                aria-disabled={adminBlogId !== '' && (adminLinks.indexOf(link) === isDefault)}
                             >
                                 <link.icon /> {link.name}
                             </li>
@@ -75,10 +87,11 @@ const AdminNav = () => {
                         <DrawerBody className='mobile-menu-body'>
                             <ul>
                                 {adminLinks.map((link, i) => (
-                                    <Link to={link.linkUrl} key={i + link.name}>
+                                    <Link to={link.linkUrl} key={i + link.name} aria-disabled={adminBlogId !== '' && (adminLinks.indexOf(link) === isDefault)}>
                                         <li
                                             onClick={() => { setIsDefault(i); onClose() }}
                                             className={adminLinks.indexOf(link) === isDefault ? 'is-selected' : null}
+                                            aria-disabled={adminBlogId !== '' && (adminLinks.indexOf(link) === isDefault)}
                                         >
                                             <link.icon /> {link.name}
                                         </li>

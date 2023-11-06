@@ -13,13 +13,13 @@ const AdminLayout = ({ children }) => {
     useEffect(() => {
         if (token) {
             setRouteGuard(false)
-        } else if (!token) {
-            navigate('/admin/register')
+        } else if (!token || token === '') {
+            navigate('/admin/login')
         }
     }, [token])
     return (
-        <>
-            <section className='admin-layout_container'>
+        <>{!routeGuard
+            && <section className='admin-layout_container'>
                 <section className='admin-layout_container_nav'>
                     <AdminNav />
                 </section>
@@ -27,6 +27,7 @@ const AdminLayout = ({ children }) => {
                     {!routeGuard && children}
                 </section>
             </section>
+        }
         </>
     )
 };

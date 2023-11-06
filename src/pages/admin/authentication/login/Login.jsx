@@ -43,8 +43,8 @@ const Login = () => {
                     }
                 >
                     {({ handleSubmit, getFieldProps, touched, errors }) => (
-                        <form onSubmit={handleSubmit} className='registration-form'>
-                            <InputGroup className='registration-form_wrapper_inputs'>
+                        <form onSubmit={handleSubmit} className='login-form'>
+                            <InputGroup className='login-form_wrapper_inputs'>
                                 <Box>
                                     <Text>Email:</Text>
                                     <Input
@@ -75,7 +75,6 @@ const Login = () => {
                         </form>
                     )}
                 </Formik>
-                <Text className='login-link' textAlign='center' marginTop={2}>Don&apos;t have an account ? <Link to='/admin/register'>Sign Up</Link></Text>
             </Box>
         </Container>
     )

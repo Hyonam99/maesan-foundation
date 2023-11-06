@@ -17,7 +17,7 @@ function App () {
                 <Route path='/gallery' element={<UserLayout><Gallery /></UserLayout>} />
                 <Route path='/contact' element={<UserLayout><Contact /></UserLayout>} />
                 <Route path='/admin/login' element={<Login />} />
-                <Route path='/admin/register' element={<Register />} />
+                <Route path='/admin/register' element={<AdminLayout><Register /></AdminLayout>} />
                 <Route path='/admin/edit-blog' element={<AdminLayout><EditBlog /></AdminLayout>} />
                 <Route path='/admin/dashboard' element={<AdminLayout><Dashboard /></AdminLayout>} />
             </Routes>

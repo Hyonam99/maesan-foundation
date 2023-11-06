@@ -8,13 +8,14 @@ export const BlogContextProvider = ({ children }) => {
     const [stat, setStat] = useState()
     const [blogContent, setBlogContent] = useState()
     const getPes = JSON.parse(localStorage.getItem('persistBlog'))
-    const [persistBlog, setPersistBlog] = useState(getPes ?? {
-        title: '',
-        theme: '',
-        location: '',
-        content: '',
-        image: ''
-    })
+    // const [persistBlog, setPersistBlog] = useState(getPes ?? {
+    //     title: '',
+    //     theme: '',
+    //     location: '',
+    //     content: '',
+    //     image: ''
+    // })
+    const [persistBlog, setPersistBlog] = useState(getPes)
     const [screen, setScreen] = useState('CREATE');
 
     useEffect(() => {

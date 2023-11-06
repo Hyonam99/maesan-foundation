@@ -62,6 +62,14 @@ const ContentEditor = () => {
         if (adminBlogId && persistBlog?.title === '') {
             getBlog(adminBlogId);
         }
+
+        return () => {
+            //  clean up the useEffect when the component unmounts
+            if (!window.location.href.includes("adminblogid")) {
+                setBlogContent();
+                flushPersistBlogs();
+            }
+        };
     }, [adminBlogId])
 
     const getRef = (itd) => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Box, Input, InputGroup, Text, Checkbox, Alert, AlertIcon } from '@chakra-ui/react';
+import { Container, Box, Input, InputGroup, Text, Alert, AlertIcon } from '@chakra-ui/react';
 import { ButtonCustom } from 'components/component-exports';
 import { useRegister } from 'services/api-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './register.scss'
 
@@ -27,7 +27,7 @@ const Register = () => {
     return (
         <Container maxW='xl' className='registration-section'>
             <Box>
-                <Text textAlign='center' fontSize='26px' fontWeight='semibold' marginBottom={5}>Register</Text>
+                <Text textAlign='center' fontSize='26px' fontWeight='semibold' marginBottom={5}>Create User</Text>
                 {status.indicator
                     && <Alert status={registerHook.error ? 'error' : 'success'} marginBottom={4}>
                         <AlertIcon />
@@ -52,7 +52,7 @@ const Register = () => {
                                     <Text>Full Name:</Text>
                                     <Input
                                         type='text'
-                                        placeholder='enter your name' {...getFieldProps('fullname')}
+                                        placeholder='enter full name' {...getFieldProps('fullname')}
                                     />
                                     {touched.fullname && errors.fullname
                                         ? (<small>{errors.fullname}</small>)
@@ -62,7 +62,7 @@ const Register = () => {
                                     <Text>Email:</Text>
                                     <Input
                                         type='email'
-                                        placeholder='enter your email' {...getFieldProps('email')}
+                                        placeholder='enter email address' {...getFieldProps('email')}
                                     />
                                     {touched.email && errors.email
                                         ? (<small>{errors.email}</small>)
@@ -72,21 +72,16 @@ const Register = () => {
                                     <Text>Password:</Text>
                                     <Input
                                         type='password'
-                                        placeholder='enter your password' {...getFieldProps('password')} />
+                                        placeholder='enter unique password' {...getFieldProps('password')} />
                                     {touched.password && errors.password
                                         ? (<small>{errors.password}</small>)
                                         : null}
                                 </Box>
                             </InputGroup>
-                            <Box className='registration-form_acknowledgement' >
-                                <Checkbox />
-                                <Text>I accept the terms of the Service & Privacy Policy.</Text>
-                            </Box>
-                            <ButtonCustom title='Sign Up' type='submit' isLoading={registerHook.isLoading}/>
+                            <ButtonCustom title='Create' type='submit' isLoading={registerHook.isLoading}/>
                         </form>
                     )}
                 </Formik>
-                <Text className='login-link' textAlign='center' marginTop={2}>Already have an account ? <Link to='/admin/login'>Log in</Link></Text>
             </Box>
         </Container>
     )
