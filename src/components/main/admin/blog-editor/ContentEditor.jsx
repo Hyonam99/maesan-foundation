@@ -58,7 +58,9 @@ const ContentEditor = () => {
     useEffect(() => {
         if (adminBlogId) {
             setScreen('EDIT')
-            getBlog(adminBlogId)
+        }
+        if (adminBlogId && persistBlog?.title === '') {
+            getBlog(adminBlogId);
         }
     }, [adminBlogId])
 
@@ -71,14 +73,6 @@ const ContentEditor = () => {
             const obj = { ...data?.data, image: data?.data?.image?.[0] }
             setPersistBlog(obj);
             setBlogContent(obj);
-            formikRef.current.setValues({
-                title: persistBlog?.title,
-                theme: persistBlog?.theme,
-                location: persistBlog?.location,
-                content: persistBlog?.content,
-                image: persistBlog?.image
-            })
-            
             newRef.current.setMarkdown(persistBlog?.content ?? "")
         }
     }, [data, isSuccess])
@@ -216,6 +210,7 @@ const ContentEditor = () => {
                                     placeholder="enter blog title"
                                     name="title"
                                     {...getFieldProps("title")}
+                                    value={persistBlog?.title}
                                     onInput={(e) => {
                                         setPersistBlog({
                                             ...persistBlog,
@@ -237,6 +232,7 @@ const ContentEditor = () => {
                                         placeholder="enter blog theme"
                                         name="theme"
                                         {...getFieldProps("theme")}
+                                        value={persistBlog?.theme}
                                         onInput={(e) => {
                                             setPersistBlog({
                                                 ...persistBlog,
@@ -257,6 +253,7 @@ const ContentEditor = () => {
                                         placeholder="enter location"
                                         name="location"
                                         {...getFieldProps("location")}
+                                        value={persistBlog?.location}
                                         onInput={(e) => {
                                             setPersistBlog({
                                                 ...persistBlog,
@@ -274,19 +271,19 @@ const ContentEditor = () => {
                             <Box className="inputs-holder">
                                 <ImageInput
                                     title={`${
-                                        values.image ? "edit" : "add"
+                                        (persistBlog?.image || values.image) ? "edit" : "add"
                                     } cover Image`}
                                     icon={<LiaCameraSolid size={19} />}
                                     onChange={(e) => {
                                         setFieldValue("image", e);
                                         setPersistBlog({ ...persistBlog, image: e });
                                     }}
-                                    initialImage={values.image}
+                                    initialImage={persistBlog?.image || values.image}
                                     validationMessage={errors.image}
                                 />
-                                {values.image && (
+                                {(persistBlog?.image || values.image) && (
                                     <Box className="content-image-preview">
-                                        <img src={values.image} alt="cover-image" />
+                                        <img src={persistBlog?.image} alt="cover-image" />
                                     </Box>
                                 )}
                             </Box>
@@ -297,7 +294,7 @@ const ContentEditor = () => {
                                         setFieldValue("content", e);
                                         setPersistBlog({ ...persistBlog, content: e });
                                     }}
-                                    quillValue={values.content}
+                                    quillValue={persistBlog?.content}
                                     validationMessage={errors.content}
                                     onRef={getRef}
                                 />
