@@ -23,7 +23,7 @@ const Login = () => {
     }, [loginHook.data, loginHook.error])
 
     return (
-        <Container maxW='xl' padding={16} className='registration-section'>
+        <Container maxW='xl' className='registration-section'>
             <Box>
                 <Text textAlign='center' fontSize='26px' fontWeight='semibold' marginBottom={5}>Login</Text>
                 {status.indicator

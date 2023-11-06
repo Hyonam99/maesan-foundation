@@ -48,7 +48,7 @@ const AdminDashboard = () => {
     }, []);
 
     return (
-        <section className='admin-dashboard-test'>
+        <section className='admin-dashboard-tabs'>
             <h3>Good {timeOfDay}!</h3>
             <Tabs isFitted variant='enclosed' onChange={(index) => setTabIndex(index)}>
                 <TabList mb='1em'>
