@@ -78,25 +78,7 @@ const ContentEditor = () => {
                 content: persistBlog?.content,
                 image: persistBlog?.image
             })
-            formikRef.current.initialValues = {
-                title: persistBlog?.title,
-                theme: persistBlog?.theme,
-                location: persistBlog?.location,
-                content: persistBlog?.content,
-                image: persistBlog?.image
-            }
-            formikRef.current.setFieldValue('title', persistBlog?.title)
-            formikRef.current.setFieldValue('theme', persistBlog?.theme)
-            formikRef.current.setFieldValue('location', persistBlog?.location)
-            formikRef.current.setFieldValue('content', persistBlog?.content)
-            formikRef.current.setFieldValue('image', persistBlog?.image)
-            formikRef.current.values = {
-                title: persistBlog?.title,
-                theme: persistBlog?.theme,
-                location: persistBlog?.location,
-                content: persistBlog?.content,
-                image: persistBlog?.image
-            }
+            
             newRef.current.setMarkdown(persistBlog?.content ?? "")
         }
     }, [data, isSuccess])
