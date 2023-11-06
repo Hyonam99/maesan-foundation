@@ -178,7 +178,6 @@ const ContentEditor = () => {
             <section className="content-editor-container_form-wrapper">
                 <Formik
                     innerRef={formikRef}
-                    enableReinitialize={isLoading}
                     initialValues={
                         {
                             title: stateBlogContent?.title ?? "",
