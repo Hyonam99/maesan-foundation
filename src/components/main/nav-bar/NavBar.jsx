@@ -21,7 +21,7 @@ const NavBar = () => {
 
                 {Links.map((link) => (
                     <li key={link.linkName}>
-                        <Link to={link.linkUrl} onClick={() => setIsToggled(false)} target={Links.indexOf(link) === 5 && 'blank'}>{link.linkName}</Link>
+                        <Link to={link.linkUrl} onClick={() => setIsToggled(false)} target={Links.indexOf(link) === 5 ? '_blank' : '_self'}>{link.linkName}</Link>
                     </li>
                 ))}
 

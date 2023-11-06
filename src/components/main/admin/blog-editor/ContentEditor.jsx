@@ -57,6 +57,7 @@ const ContentEditor = () => {
 
     useEffect(() => {
         if (adminBlogId) {
+            setScreen('EDIT')
             getBlog(adminBlogId)
         }
     }, [adminBlogId])
@@ -71,13 +72,13 @@ const ContentEditor = () => {
             setPersistBlog(obj);
             setBlogContent(obj);
             formikRef.current.setValues({
-                title: stateBlogContent?.title,
-                theme: stateBlogContent?.theme,
-                location: stateBlogContent?.location,
-                content: stateBlogContent?.content,
-                image: stateBlogContent?.image
+                title: persistBlog?.title,
+                theme: persistBlog?.theme,
+                location: persistBlog?.location,
+                content: persistBlog?.content,
+                image: persistBlog?.image
             })
-            newRef.current.setMarkdown(stateBlogContent?.content ?? "")
+            newRef.current.setMarkdown(persistBlog?.content ?? "")
         }
     }, [data, isSuccess])
 
@@ -96,6 +97,7 @@ const ContentEditor = () => {
 
     const handleBlogSubmit = () => {
         if (stat === "Discard") {
+            handleCancel()
             navigate("/admin/dashboard");
         }
         if (!adminBlogId && blogContent && stat === "Publish") {
@@ -167,7 +169,6 @@ const ContentEditor = () => {
                         type="button"
                         className="btn-3"
                         onClick={() => {
-                            handleCancel();
                             setStat("Discard");
                             onOpen();
                         }}
@@ -309,7 +310,7 @@ const ContentEditor = () => {
             <AlertDialog
                 motionPreset="slideInBottom"
                 leastDestructiveRef={cancelRef}
-                onClose={onClose}
+                onClose={() => { onClose(); setHasError(false) }}
                 isOpen={isOpen}
                 isCentered
             >
