@@ -26,6 +26,7 @@ module.exports = {
         'padded-blocks': 'off',
         'operator-linebreak': ['error', 'before'],
         indent: ['error', 4],
-        'comma-dangle': 'off'
+        'comma-dangle': 'off',
+        quotes: 'off'
     }
 };

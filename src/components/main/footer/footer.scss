@@ -132,6 +132,13 @@
                     
                     form {
                         
+                        .subscription-message {
+                            display: block;
+                            margin-bottom: .5rem;
+                            font-size: 13px;
+                            color: red;
+                        }
+
                         input {
                             border-radius: 8px 0 0 8px;
                             border-right: 0;
