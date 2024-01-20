@@ -30,7 +30,7 @@ import { CustomSpinner } from 'components/component-exports';
 import './admin-table.scss'
 import { Link } from 'react-router-dom';
 import { useDeleteBlog } from 'services/api-hooks';
-import { BlogContext } from 'context/blogContext'
+import { BlogContext } from 'context/BlogContext'
 
 const AdminTable = ({ filterKey, data }) => {
     const { token, setScreen } = useContext(BlogContext)

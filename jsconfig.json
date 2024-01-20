@@ -1,6 +1,21 @@
 {
-    "compilerOptions": {
-        "baseUrl": "src"
-    },
-    "include": ["src"]
+	"compilerOptions": {
+		"baseUrl": "src",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"target": "ESNext",
+		"jsx": "react-jsx",
+		"outDir": "./dist",
+		"types": ["vite/client"],
+		"isolatedModules": true
+	},
+	"include": [
+		"src/**/*",
+		"**/*.js",
+		"**/*.jsx",
+		"src/components",
+		"src/context",
+		"src/layouts",
+		"src/pages",
+	],
+	"exclude": ["node_modules"]
 }

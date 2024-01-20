@@ -4,7 +4,7 @@ import App from './App';
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import { BlogContextProvider } from 'context/blogContext';
+import { BlogContextProvider } from 'context/BlogContext';
 import { CloudinaryContext } from 'cloudinary-react';
 
 const cloudName = 'maesan-product';

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 export const maesanService = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL
+    baseURL: import.meta.env.VITE_APP_BASE_URL
 })
 
 export const registerAdmin = async (payload) => {

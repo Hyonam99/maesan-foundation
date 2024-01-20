@@ -25,7 +25,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCreateBlog, useEditBlog, useGetBlog } from "services/api-hooks";
-import { BlogContext } from "context/blogContext";
+import { BlogContext } from "context/BlogContext";
 import { LiaCameraSolid } from "react-icons/lia";
 import "./content-editor.scss";
 
