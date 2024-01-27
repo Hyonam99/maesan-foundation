@@ -23,7 +23,7 @@ export const heroContent = [
         subText: 'Preserve human lives donate now !',
     },
     {
-        title: 'There is more',
+        title: `There's more`,
         subTitle: 'to life than wealth',
         subText: 'Preserve human lives donate now !',
     },

@@ -10,9 +10,11 @@ import {
     AlertDialog,
     AlertDialogOverlay,
     AlertDialogContent,
+    Button
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BsTwitter, BsEnvelopeFill } from "react-icons/bs";
+import { RxCross2 } from "react-icons/rx";
 import Logo from "../../../assets/custom-icons/logo-full.png";
 import "./footer.scss";
 import { ButtonCustom } from "../../component-exports";
@@ -30,6 +32,10 @@ const SubscribeForm = ({ status, message, subscribe }) => {
     const [userAlert, setUserAlert] = useState({ shown: false, message: "" });
     const [showError, setShowError] = useState(false);
 
+    const onClose = () => {
+        setUserAlert({ shown: false, message: "" });
+    }
+
     useEffect(() => {
         if (isSuccess) {
             setUserAlert({
@@ -38,9 +44,6 @@ const SubscribeForm = ({ status, message, subscribe }) => {
             });
         }
 
-        setTimeout(() => {
-            setUserAlert({ shown: false, message: "" });
-        }, 4000);
     }, [isSuccess]);
 
     useEffect(() => {
@@ -92,18 +95,24 @@ const SubscribeForm = ({ status, message, subscribe }) => {
                 )}
             </Formik>
             <AlertDialog
-                onClose={() => {
-                    setUserAlert({ shown: false, message: "" });
-                }}
+                onClose={onClose}
                 isOpen={userAlert.shown}
                 isCentered
                 leastDestructiveRef={cancelRef}
+                motionPreset='slideInBottom'
             >
                 <AlertDialogOverlay />
 
-                <AlertDialogContent>
+                <AlertDialogContent className="dialog-content">
+                    <Box className="dialog-close-btn">
+                        <Button onClick={onClose}>
+                            <RxCross2 size={20}/>
+                        </Button>
+                    </Box>
                     <Box className="subscription-alert">
                         <p>{userAlert.message}</p>
+                        <p>You can still make a donation today, and touch a life</p>
+                        <Link to="#" className="donate-link-btn">Donate</Link>
                     </Box>
                 </AlertDialogContent>
             </AlertDialog>

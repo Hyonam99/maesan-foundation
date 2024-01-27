@@ -89,6 +89,41 @@
     }
 }
 
+.dialog-content {
+
+    .dialog-close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: .4rem;
+
+        button {
+            width: fit-content !important;
+            height: fit-content;
+            padding: .2rem;
+        }
+    }
+
+    .subscription-alert {
+        padding: 1rem;
+    
+        p {
+            text-align: center;
+        }
+    
+        .donate-link-btn {
+            display: block;
+            text-align: center;
+            border: 0;
+            margin-top: 1rem;
+            padding: .4rem 1.2rem;
+            border-radius: .4rem;
+            background: $bg-dark;
+            color: $white-color;
+        }
+    }
+}
+
 @media screen and (max-width: 1118px) {
     .footer-container {
     
@@ -183,6 +218,12 @@
             }
     
         }
+    }
+}
+
+@media screen and (max-width: 484px) {
+    .dialog-content {
+        width: 85% !important;
     }
 }
 

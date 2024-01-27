@@ -60,7 +60,7 @@ const Hero = () => {
                             <h2>{content.title}</h2>
                             <h3>{content.subTitle}</h3>
                             <p>{content.subText}</p>
-                            <ButtonGroup gap='4'>
+                            <ButtonGroup gap='4' marginTop="1.3rem">
                                 <Link to='mailto:maesanfoundation@gmail.com'>
                                     <ButtonCustom title='Join Us Today' outline/>
                                 </Link>
