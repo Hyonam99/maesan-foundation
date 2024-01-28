@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginAdmin, registerAdmin, deleteBlog, createBlog, editBlog, getMaesanBlog, uploadImage } from './api-services';
+import { loginAdmin, registerAdmin, deleteBlog, createBlog, editBlog, getMaesanBlog, uploadImage, contactEmail } from './api-services';
 
 export const useRegister = () => {
 
@@ -151,5 +151,28 @@ export const useUploadImage = () => {
         isLoading,
         error,
         isSuccess
+    }
+}
+
+export const useContactEmail = () => {
+
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [error, setError] = useState(null);
+
+    return {
+        contact: (values) => {
+            setIsLoading(true)
+            contactEmail(values)
+                .then(res => { setData(res); setIsLoading(false); setIsSuccess(true); setError(null); setIsError(false) })
+                .catch(err => { setError(err.response.data); setIsLoading(false); setIsSuccess(false); setIsError(true); setData(null) })
+        },
+        data,
+        isLoading,
+        error,
+        isSuccess,
+        isError
     }
 }

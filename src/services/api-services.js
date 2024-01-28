@@ -75,3 +75,14 @@ export const handleFileUpload = async (file) => {
     }
 
 };
+
+export const contactEmail = async (emailParams) => {
+    const requestData = {
+        service_id: 'maesan_service_apbreum',
+        template_id: 'maesan_template_q4x3g38',
+        user_id: 'uzOt3W32dhtNIPLWZ',
+        template_params: { ...emailParams }
+    }
+    const response = maesanService.post(`https://api.emailjs.com/api/v1.0/email/send`, requestData)
+    return (await response).data
+}
