@@ -6,22 +6,25 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { BlogContextProvider } from 'context/BlogContext';
 import { CloudinaryContext } from 'cloudinary-react';
+import { ModalContextProvider } from 'context/ModalContext';
 
 const cloudName = 'maesan-product';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <ChakraProvider>
-                <BlogContextProvider>
-                    <CloudinaryContext cloudName={cloudName}>
-                        <App />
-                    </CloudinaryContext>
-                </BlogContextProvider>
-            </ChakraProvider>
-        </BrowserRouter>
-    </React.StrictMode>
+	<React.StrictMode>
+		<BrowserRouter>
+			<ChakraProvider>
+				<BlogContextProvider>
+					<ModalContextProvider>
+						<CloudinaryContext cloudName={cloudName}>
+							<App />
+						</CloudinaryContext>
+					</ModalContextProvider>
+				</BlogContextProvider>
+			</ChakraProvider>
+		</BrowserRouter>
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

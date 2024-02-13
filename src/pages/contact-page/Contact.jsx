@@ -17,12 +17,18 @@ import { Formik } from "formik";
 import { RxCross2 } from "react-icons/rx";
 import * as Yup from "yup";
 import { useContactEmail } from "services/api-hooks";
+import { MdContentCopy } from "react-icons/md";
+import { FaCheck } from "react-icons/fa6";
 import "./contact.scss";
 import { SuccessIcon, ErrorIcon } from "assets/custom-icons/index";
+import { handleCopyText } from "utils/index";
 
 const Contact = () => {
     const { contact, isLoading, isSuccess, isError } = useContactEmail();
-    const [userAlert, setUserAlert] = useState({ shown: false, message: "" });
+    const [ userAlert, setUserAlert ] = useState( { shown: false, message: "" } );
+    const [isCopied, setIsCopied] = useState(false);
+	const [isAccountCopied, setIsAccountCopied] = useState(false);
+    
     const cancelRef = useRef();
     const onClose = () => {
         setUserAlert({ shown: false, message: "" });
@@ -110,7 +116,6 @@ const Contact = () => {
 													type="submit"
 													isLoading={isLoading}
 												/>
-												{isSuccess && <span>mail sent</span>}
 											</form>
 										</InputGroup>
 									)}
@@ -138,13 +143,43 @@ const Contact = () => {
 						<Box className="dialog-icon">
 							{isSuccess ? <SuccessIcon /> : <ErrorIcon />}
 						</Box>
-						<Box className="subscription-alert">
+						<Box className="donation-alert">
 							<p>{userAlert.message}</p>
 							<p>You can still make a donation today, and touch a life</p>
 							<Box className="donate-link-btn">
 								<p>Eugene Chimaobi</p>
-								<p>9 Payment Service Bank</p>
-								<p>6078180893</p>
+								<p>
+									9 Payment Service Bank{" "}
+									<button
+										onClick={() => {
+											handleCopyText("9 Payment Service Bank", setIsCopied);
+										}}
+										style={{
+											background: "none",
+											border: "0",
+											color: "#00a4d6",
+										}}
+									>
+										{isCopied ? <FaCheck /> : <MdContentCopy />}{" "}
+										{isCopied ? "copied" : "copy"}
+									</button>
+								</p>
+								<p>
+									6078180893{" "}
+									<button
+										onClick={() => {
+											handleCopyText("6078180893", setIsAccountCopied);
+										}}
+										style={{
+											background: "none",
+											border: "0",
+											color: "#00a4d6",
+										}}
+									>
+										{isAccountCopied ? <FaCheck /> : <MdContentCopy />}{" "}
+										{isAccountCopied ? "copied" : "copy"}
+									</button>
+								</p>
 							</Box>
 						</Box>
 					</AlertDialogContent>

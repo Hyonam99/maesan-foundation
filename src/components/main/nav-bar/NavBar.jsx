@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RxCross2 } from 'react-icons/rx';
@@ -12,11 +12,18 @@ import {
 	AlertDialogContent,
 	Button,
 } from "@chakra-ui/react";
+import { MdContentCopy } from "react-icons/md";
+import { FaCheck } from "react-icons/fa6";
 import './nav-bar.scss';
+import { handleCopyText } from "utils/index";
+import { ModalContext } from "context/ModalContext";
+
 
 const NavBar = () => {
+    const { showModal, message, setShowModal, setMessage } = useContext(ModalContext);
     const [isToggled, setIsToggled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
+    const [isAccountCopied, setIsAccountCopied] = useState(false);
     const cancelRef = useRef();
     return (
 			<nav>
@@ -44,7 +51,7 @@ const NavBar = () => {
 							to="#"
 							onClick={() => {
 								setIsToggled(false);
-								setIsOpen(true);
+								setShowModal(true);
 							}}
 							target={"_self"}
 						>
@@ -69,9 +76,10 @@ const NavBar = () => {
 				</div>
 				<AlertDialog
 					onClose={() => {
-						setIsOpen(false);
+                        setShowModal(false);
+                        setMessage("");
 					}}
-					isOpen={isOpen}
+					isOpen={showModal}
 					isCentered
 					leastDestructiveRef={cancelRef}
 					motionPreset="slideInBottom"
@@ -82,18 +90,50 @@ const NavBar = () => {
 						<Box className="dialog-close-btn">
 							<Button
 								onClick={() => {
-									setIsOpen(false);
+                                setShowModal( false );
+                                setMessage("");
 								}}
 							>
 								<RxCross2 size={20} />
 							</Button>
 						</Box>
 						<Box className="donation-alert">
+							{(message !== "") && <p>{message}</p>}
 							<p>Make a donation today, and touch a life</p>
 							<Box className="donate-link-btn">
 								<p>Eugene Chimaobi</p>
-								<p>9 Payment Service Bank</p>
-								<p>6078180893</p>
+								<p>
+									9 Payment Service Bank{" "}
+									<button
+										onClick={() => {
+											handleCopyText("9 Payment Service Bank", setIsCopied);
+										}}
+										style={{
+											background: "none",
+											border: "0",
+											color: "#00a4d6",
+										}}
+									>
+										{isCopied ? <FaCheck /> : <MdContentCopy />}{" "}
+										{isCopied ? "copied" : "copy"}
+									</button>
+								</p>
+								<p>
+									6078180893{" "}
+									<button
+										onClick={() => {
+											handleCopyText("6078180893", setIsAccountCopied);
+										}}
+										style={{
+											background: "none",
+											border: "0",
+											color: "#00a4d6",
+										}}
+									>
+										{isAccountCopied ? <FaCheck /> : <MdContentCopy />}{" "}
+										{isAccountCopied ? "copied" : "copy"}
+									</button>
+								</p>
 							</Box>
 						</Box>
 					</AlertDialogContent>
@@ -103,3 +143,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
     Autoplay,
@@ -14,20 +14,14 @@ import 'swiper/css/navigation';
 import { heroContent } from '../../../mocked-data/mocked-data';
 import { ButtonCustom } from '../../component-exports';
 import {
-	Box,
-	AlertDialog,
-	AlertDialogOverlay,
-	AlertDialogContent,
-	Button,
-	ButtonGroup,
+	ButtonGroup
 } from "@chakra-ui/react";
-import { RxCross2 } from "react-icons/rx";
 import { Link } from 'react-router-dom';
+import { ModalContext } from "context/ModalContext";
 
 const Hero = () => {
+    const { setShowModal } = useContext(ModalContext);
     const [ windowSize, setWindowSize ] = useState( getWindowSize() );
-    const [isOpen, setIsOpen] = useState(false);
-	const cancelRef = useRef();
 
     useEffect(() => {
         function handleWindowResize () {
@@ -77,45 +71,13 @@ const Hero = () => {
 										<ButtonCustom title="Join Us Today" outline />
 									</Link>
 									<Link to="#">
-                                        <ButtonCustom title="Donate" onClick={() => {setIsOpen(true)}} />
+                                        <ButtonCustom title="Donate" onClick={() => {setShowModal(true);}} />
 									</Link>
 								</ButtonGroup>
 							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
-
-				<AlertDialog
-					onClose={() => {
-						setIsOpen(false);
-					}}
-					isOpen={isOpen}
-					isCentered
-					leastDestructiveRef={cancelRef}
-					motionPreset="slideInBottom"
-				>
-					<AlertDialogOverlay />
-
-					<AlertDialogContent className="dialog-content">
-						<Box className="dialog-close-btn">
-							<Button
-								onClick={() => {
-									setIsOpen(false);
-								}}
-							>
-								<RxCross2 size={20} />
-							</Button>
-						</Box>
-						<Box className="donation-alert">
-							<p>Make a donation today, and touch a life</p>
-							<Box className="donate-link-btn">
-								<p>Eugene Chimaobi</p>
-								<p>9 Payment Service Bank</p>
-								<p>6078180893</p>
-							</Box>
-						</Box>
-					</AlertDialogContent>
-				</AlertDialog>
 			</section>
 		);
 };

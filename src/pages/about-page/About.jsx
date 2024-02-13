@@ -1,15 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useContext } from "react";
 import { Banner, ButtonCustom, TitleDivider } from '../../components/component-exports';
 import child1 from '../../assets/Images/child-1.jpg'
 import child2 from '../../assets/Images/children-1.jpg'
 import child3 from '../../assets/Images/children-2.jpg'
-import { RxCross2 } from "react-icons/rx";
 import {
 	Box,
-	AlertDialog,
-	AlertDialogOverlay,
-	AlertDialogContent,
-	Button,
 	Accordion,
 	AccordionButton,
 	AccordionIcon,
@@ -17,11 +12,12 @@ import {
 	AccordionPanel,
 	Image,
 } from "@chakra-ui/react";
+import { ModalContext } from "context/ModalContext";
 import './about.scss'
 
 const About = () => {
-    const [isOpen, setIsOpen] = useState(false);
-	const cancelRef = useRef();
+    const { setShowModal } = useContext(ModalContext);
+
     return (
         <>
             <Banner title="About Maesan" />
@@ -229,42 +225,11 @@ const About = () => {
                     outline
                     btnStyle="custom-button-style"
                     onClick={() => {
-                        setIsOpen(true)
+                        setShowModal(true);
                     }}
                 />
             </section>
 
-            <AlertDialog
-                onClose={() => {
-                    setIsOpen(false);
-                }}
-                isOpen={isOpen}
-                isCentered
-                leastDestructiveRef={cancelRef}
-                motionPreset="slideInBottom"
-            >
-                <AlertDialogOverlay />
-
-                <AlertDialogContent className="dialog-content">
-                    <Box className="dialog-close-btn">
-                        <Button
-                            onClick={() => {
-                                setIsOpen(false);
-                            }}
-                        >
-                            <RxCross2 size={20} />
-                        </Button>
-                    </Box>
-                    <Box className="donation-alert">
-                        <p>Make a donation today, and touch a life</p>
-                        <Box className="donate-link-btn">
-                            <p>Eugene Chimaobi</p>
-                            <p>9 Payment Service Bank</p>
-                            <p>6078180893</p>
-                        </Box>
-                    </Box>
-                </AlertDialogContent>
-            </AlertDialog>
         </>
     );
 };
